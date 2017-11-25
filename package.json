@@ -1,0 +1,23 @@
+{
+  "name": "site-clienta",
+  "version": "0.1.0",
+  "description": "",
+  "repository": "",
+  "license": "",
+  "devDependencies": {
+    "grunt": "1.0.1",
+    "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-cssmin": "2.2.1",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-uglify": "3.0.1",
+    "grunt-contrib-watch": "1.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta",
+    "fontawesome": "^4.7.2",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.5",
+    "toastr": "^2.1.2"
+  }
+}

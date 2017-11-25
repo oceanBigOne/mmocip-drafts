@@ -1,0 +1,14 @@
+{
+
+    "require": {
+        "nikic/fast-route": "1.2",
+        "twig/twig": "1.35"
+    },
+    "autoload":{
+        "psr-4": {
+            "Site\\" : "src/php/Site/"
+        }
+
+    }
+
+}

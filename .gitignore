@@ -1,3 +1,6 @@
 .idea/
 /documentation/*.bak
+vendor/
+/node_modules/
+
 
