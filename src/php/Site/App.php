@@ -7,6 +7,7 @@ namespace Site;
 
 
 use FastRoute\Route;
+use Illuminate\Database\Capsule\Manager as Capsule;
 
 /**
  * Class App
@@ -40,7 +41,15 @@ class App
      *
      * Selectionne le contoleur et le template twig à afficher
      */
-    public function run(){
+    public function run($CONFIG){
+
+        //bdd
+        $capsule = new Capsule;
+
+        $capsule->addConnection($CONFIG["bdd"]);
+        $capsule->setAsGlobal();
+
+        //route
         $routes=$this->routes;
         $dispatcher = \FastRoute\simpleDispatcher(function(\FastRoute\RouteCollector $r) use($routes) {
             foreach($routes as $route){

@@ -2,5 +2,5 @@
 /documentation/*.bak
 vendor/
 /node_modules/
-
+/dist/config.php
 

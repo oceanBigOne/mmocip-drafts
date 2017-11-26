@@ -1,5 +1,6 @@
 <?php
 namespace Site\Controller;
+use Site\Repository\DebatRepository as DebatRepository;
 
 /**
  * Class Home
@@ -16,6 +17,9 @@ Class Home implements IController {
      */
     public function run(array $data):array{
         $dataTemplate=[];
+
+        $debatsList=new DebatRepository();
+        $dataTemplate["debats"]=$debatsList->findAll();
 
         return $dataTemplate;
     }

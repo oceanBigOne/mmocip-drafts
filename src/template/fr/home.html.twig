@@ -5,4 +5,9 @@
 {% block body %}
     {{ parent() }}
    <h1>HELLO WORLD</h1>
+    <ul>
+        {% for debat in debats %}
+            <li>{{ debat.title }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
