@@ -9,7 +9,9 @@
 namespace Site\Entity;
 
 
-class Element
+use Site\Entity;
+
+class Element extends Entity
 {
     private $id;
     private $content;

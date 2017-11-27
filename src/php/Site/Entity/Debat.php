@@ -9,7 +9,9 @@
 namespace Site\Entity;
 
 
-class Debat
+use Site\Entity;
+
+class Debat extends Entity
 {
     private $id;
     private $title;
