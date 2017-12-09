@@ -6,8 +6,8 @@
     {{ parent() }}
    <h1>Liste des utilisateurs</h1>
     <ul>
-        {% for debat in debats %}
-            <li><a href="/fr/debat/{{ debat.id }}/{{ debat.title|toPath }}.html">{{ debat.title }}</a></li>
+        {% for user in users %}
+            <li><a href="#">{{ user.pseudo }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

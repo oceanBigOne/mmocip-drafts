@@ -1,6 +1,6 @@
 <?php
 namespace Site\Controller;
-use Site\Model\Debat as DebatModel;
+use Site\Model\User as UserModel;
 
 /**
  * Class Users
@@ -17,7 +17,7 @@ Class Users implements IController {
      */
     public function run(array $data):array{
         $dataTemplate=[];
-        $dataTemplate["users"]=[];//DebatModel::where('id', '!=', 0)->get();
+        $dataTemplate["users"]=UserModel::where('id', '!=', 0)->get();
         return $dataTemplate;
     }
 }
