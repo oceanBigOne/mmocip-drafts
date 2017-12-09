@@ -106,12 +106,15 @@ class App
         //selectionne la route
         $routeInfo =  $this->routeDispatcher->dispatch($httpMethod, $uri);
 
-        $twig->addGlobal("controller",$routeInfo[1]);
+        if(isset($routeInfo[1])){
+            $twig->addGlobal("controller",$routeInfo[1]);
+        }
+
 
         switch ($routeInfo[0]) {
             case \FastRoute\Dispatcher::NOT_FOUND:
                 // ... 404 Not Found
-                echo "Route non définie ...";
+                echo "Undefined route ...";
                 break;
             case \FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
                 $allowedMethods = $routeInfo[1];
@@ -126,7 +129,14 @@ class App
                     $vars["lang"]="fr"; //todo detecter langue navigateur ?
                 }
                 $path= $vars["lang"]."/".$handler.".html.twig";
-                echo $twig->render($path,$data);
+               try{
+                    echo $twig->render($path,$data);
+                }catch(\Twig_Error_Loader $e){
+                   $dataUrl=$routeInfo[2];
+                   $dataUrl["lang"]="fr";
+                   $urlFR=$this->getPathOf($routeInfo[1],$dataUrl);
+                   echo "Undefined route ... Maybe try another language : <a href='".$urlFR."'>$urlFR</a>";
+                }
                 break;
         }
         if(isset($_GET["debugsql"])){
