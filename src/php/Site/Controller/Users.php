@@ -3,13 +3,13 @@ namespace Site\Controller;
 use Site\Model\Debat as DebatModel;
 
 /**
- * Class Home
+ * Class Users
  *
- * Affichage de la page HOME du site
+ * Affichage de la page USERS du site
  *
  * @package Site\Controller
  */
-Class Home implements IController {
+Class Users implements IController {
 
     /**
      * @param array $data donnée en provenance de l'URL
@@ -17,6 +17,7 @@ Class Home implements IController {
      */
     public function run(array $data):array{
         $dataTemplate=[];
+        $dataTemplate["users"]=[];//DebatModel::where('id', '!=', 0)->get();
         return $dataTemplate;
     }
 }

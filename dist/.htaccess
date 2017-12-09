@@ -1,4 +1,13 @@
 RewriteEngine on
+
+#Redirection par langue (par odre de préférence)
+RewriteCond %{HTTP:Accept-Language} ^fr [NC]
+RewriteRule ^$ /fr [L,R=301]
+RewriteCond %{HTTP:Accept-Language} ^en [NC]
+RewriteRule ^$ /en [L,R=301]
+
+#Redirection Fastroute
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule . index.php [L]
+

@@ -6,8 +6,10 @@
 namespace Site;
 
 
-use FastRoute\Route;
+
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Site\TwigExtension\PathOfController;
+use Twig\TwigFilter as Twig_Filter;
 
 /**
  * Class App
@@ -24,6 +26,16 @@ class App
     private $routes=[];
 
     /**
+     * @var \FastRoute\RouteCollector
+     */
+    private $routeCollector=null;
+
+    /**
+     * @var \FastRoute\Dispatcher
+     */
+    private $routeDispatcher=null;
+
+    /**
      * App constructor.
      *
      * Initialise l'ensemble des routes
@@ -31,8 +43,16 @@ class App
     public function __construct()
     {
 
-        $this->routes[]=['GET','/','home'];
-        $this->routes[]=['GET','/{lang:en|fr}/','home'];
+        $this->routes[]=['GET','/{lang:en|fr}[/]','home'];
+
+        $this->routes[]=['GET','/{lang:fr}/debats[/]','debats'];
+        $this->routes[]=['GET','/{lang:en}/debates[/]','debats'];
+
+        $this->routes[]=['GET','/{lang:fr}/debat/{id:\d+}/{name}[/]','debat'];
+        $this->routes[]=['GET','/{lang:en}/debate/{id:\d+}/{name}[/]','debat'];
+
+        $this->routes[]=['GET','/{lang:fr}/utilisateurs[/]','users'];
+        $this->routes[]=['GET','/{lang:en}/users[/]','users'];
 
     }
 
@@ -45,17 +65,21 @@ class App
 
         //bdd
         $capsule = new Capsule;
+        $DB=$capsule->getDatabaseManager();
 
         $capsule->addConnection($CONFIG["bdd"]);
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
+        $DB->enableQueryLog();
 
-        //route
-        $routes=$this->routes;
-        $dispatcher = \FastRoute\simpleDispatcher(function(\FastRoute\RouteCollector $r) use($routes) {
-            foreach($routes as $route){
+
+
+        //parse toutes les routes
+        $this->routeDispatcher = \FastRoute\simpleDispatcher(function(\FastRoute\RouteCollector $r)  {
+            foreach($this->routes as $route){
                 $r->addRoute($route[0], $route[1], $route[2]);
             }
+            $this->routeCollector=$r;
         });
 
         // Fetch method and URI from somewhere
@@ -69,13 +93,21 @@ class App
         $uri = rawurldecode($uri);
 
 
-
+        //TWIG
         $loader = new \Twig_Loader_Filesystem('../src/template');
         $twig = new \Twig_Environment($loader, array(
             'cache' =>false,
-        ));// '../cache' for cache
+        ));
+        //FLITRES TWIG
+        $twig->addFilter(new Twig_Filter('toPath', 'Site\TwigFilter\FormatString::toPath'));
+        $twig->addExtension( new PathOfController());
 
-        $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
+
+        //selectionne la route
+        $routeInfo =  $this->routeDispatcher->dispatch($httpMethod, $uri);
+
+        $twig->addGlobal("controller",$routeInfo[1]);
+
         switch ($routeInfo[0]) {
             case \FastRoute\Dispatcher::NOT_FOUND:
                 // ... 404 Not Found
@@ -97,6 +129,11 @@ class App
                 echo $twig->render($path,$data);
                 break;
         }
+        if(isset($_GET["debugsql"])){
+            dd($DB->getQueryLog());
+        }
+
+
     }
 
     /**
@@ -172,6 +209,99 @@ class App
             $dir = strtolower($classname);
         }
         return substr($dir, 1);
+    }
+
+
+    /**
+     * Renvoi les routes enregistrés pour l'application
+     * @return array
+     */
+    public function getRoutes():array{
+        return $this->routes;
+    }
+
+    /**
+     * Renvoi la route d'un controlleur spécifique
+     * @return string
+     */
+    public function getPathOf(string $controller,$parameters):string{
+
+        $revertedRoutes=[];
+        foreach($this->routes as $route){
+            $routeMethod=$route[0];
+            $routeRegex=$route[1];
+            $routeController=$route[2];
+            if( $routeController == $controller && ( strtolower($routeMethod)=="get" || strtolower($routeMethod)=="post" )){
+                $revertedRoutes[]=$routeRegex;
+            }
+        }
+        $goodRegex="";
+        $out="";
+        $match=true;
+        foreach( $revertedRoutes as $regex){
+            $out="";
+            $match=true;
+            $regex=str_replace('[/]','',$regex);
+            $dirs=explode("/",$regex);
+            foreach($dirs as $dir){
+
+                if(strstr($dir,"{")){
+                    $dir=str_replace(['{','}'],['',''],$dir);
+                    $param=explode(":",$dir);
+                    $field=$param[0];
+                    if(isset($parameters[$field])){
+                        if(count($param)>1){
+                            $values=explode("|",$param[1]);
+                        }else{
+                            $values=["\*"];
+                        }
+                        $value="";
+                        if(count($values)>1){
+                            foreach($values as $val){
+
+                                if(preg_match("#".$val."#",$parameters[$field])==1){
+                                    $value=$val;
+                                }
+
+                            }
+                        }else{
+
+                            if (preg_match("#" . $values[0] . "#", $parameters[$field]) == 1 || $values[0] == "\*") {
+                                $value = $parameters[$field];
+                            }
+
+                        }
+                        if($value!="" && $match ){
+                            $out.=$value."/";
+
+                        }else{
+                            $match=false;
+                        }
+                    }else{
+                        $match=false;
+                    }
+
+                }else{
+                    if($match){
+                        $out.=$dir."/";
+
+                    }
+
+                }
+            }
+
+            if($match){
+                $goodRegex=$regex;
+                break;
+            }
+        }
+        if($out==""){
+            $out="#";
+        }
+        if(substr($goodRegex,-1)!="/"){
+            $out=substr($out,0,-1);
+        }
+        return $out;
     }
 
 

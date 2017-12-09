@@ -1,15 +1,22 @@
 <?php
+/**
+ * Project : mmocip-drafts
+ * File : Debat.php
+ */
+
 namespace Site\Controller;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Site\Model\Debat as DebatModel;
+use Site\Model\Element as ElementModel;
 
 /**
- * Class Home
+ * Class Debat
  *
- * Affichage de la page HOME du site
+ * Affichage de la page Debat du site
  *
  * @package Site\Controller
  */
-Class Home implements IController {
+class Debat implements IController {
 
     /**
      * @param array $data donnée en provenance de l'URL
@@ -17,6 +24,7 @@ Class Home implements IController {
      */
     public function run(array $data):array{
         $dataTemplate=[];
+        $dataTemplate["debat"]=DebatModel::where('id', '=', $data["id"])->get()[0];
         return $dataTemplate;
     }
 }

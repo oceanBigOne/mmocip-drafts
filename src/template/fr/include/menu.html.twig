@@ -1,0 +1,16 @@
+
+{% block menu %}
+
+    {% set active=controller|lower %}
+
+    <li class="nav-item {% if active=="home"   %} active {% endif %}">
+        <a class="nav-link" href="{{ get_path_of('home',{"lang":'fr'}) }}">Accueil</a>
+    </li>
+    <li class="nav-item {% if active=="debats"   %} active {% endif %}">
+        <a class="nav-link" href="{{ get_path_of('debats',{"lang":'fr'}) }}">Débats</a>
+    </li>
+    <li class="nav-item {% if active=="users"   %} active {% endif %}">
+        <a class="nav-link" href="{{ get_path_of('users',{"lang":'fr'}) }}">Utilisateurs</a>
+    </li>
+
+{% endblock %}

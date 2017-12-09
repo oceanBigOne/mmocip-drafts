@@ -1,0 +1,13 @@
+{% extends "fr/base.html.twig" %}
+
+{% block stylesheets %}{{ parent() }}{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+   <h1>Liste des utilisateurs</h1>
+    <ul>
+        {% for debat in debats %}
+            <li><a href="/fr/debat/{{ debat.id }}/{{ debat.title|toPath }}.html">{{ debat.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
