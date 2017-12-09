@@ -48,6 +48,7 @@ class App
 
         $capsule->addConnection($CONFIG["bdd"]);
         $capsule->setAsGlobal();
+        $capsule->bootEloquent();
 
         //route
         $routes=$this->routes;

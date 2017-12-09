@@ -1,6 +1,6 @@
 <?php
 namespace Site\Controller;
-use Site\Repository\DebatRepository as DebatRepository;
+use Site\Model\Debat as Debat;
 
 /**
  * Class Home
@@ -17,10 +17,7 @@ Class Home implements IController {
      */
     public function run(array $data):array{
         $dataTemplate=[];
-
-        $debatsList=new DebatRepository();
-        $dataTemplate["debats"]=$debatsList->findAll();
-
+        $dataTemplate["debats"]=Debat::where('id', '!=', 0)->get();
         return $dataTemplate;
     }
 }
