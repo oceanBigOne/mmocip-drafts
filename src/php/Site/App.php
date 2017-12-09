@@ -110,11 +110,12 @@ class App
             $twig->addGlobal("controller",$routeInfo[1]);
         }
 
-
         switch ($routeInfo[0]) {
             case \FastRoute\Dispatcher::NOT_FOUND:
                 // ... 404 Not Found
-                echo "Undefined route ...";
+               // echo "Undefined route ...";
+                header("HTTP/1.0 404 Not Found");
+
                 break;
             case \FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
                 $allowedMethods = $routeInfo[1];
@@ -129,13 +130,21 @@ class App
                     $vars["lang"]="fr"; //todo detecter langue navigateur ?
                 }
                 $path= $vars["lang"]."/".$handler.".html.twig";
+
+                //todo : redirection 301 sur les changements de noms dans les liens
+                /*if($this->getPathOf($handler,$vars)!=$uri){
+                    header("Status: 301 Moved Permanently", false, 301);
+                    header("Location: ".$this->getPathOf($handler,$vars));
+                }*/
                try{
                     echo $twig->render($path,$data);
                 }catch(\Twig_Error_Loader $e){
-                   $dataUrl=$routeInfo[2];
-                   $dataUrl["lang"]="fr";
-                   $urlFR=$this->getPathOf($routeInfo[1],$dataUrl);
-                   echo "Undefined route ... Maybe try another language : <a href='".$urlFR."'>$urlFR</a>";
+                   //$dataUrl=$vars;
+                   //$dataUrl["lang"]="fr";
+                  // $urlFR=$this->getPathOf($handler,$dataUrl);
+                  // echo "Undefined route ... Maybe try another language : <a href='".$urlFR."'>$urlFR</a>";
+                   header("HTTP/1.0 404 Not Found");
+
                 }
                 break;
         }
