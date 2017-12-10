@@ -2,3 +2,27 @@
 main{
     padding-top:100px;
 }
+
+.overflow-hidden{
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.row-table > div{
+    padding-top:10px;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(0,0,0,.1);
+    vertical-align: middle;
+}
+
+@media (max-width: 575px) {
+    .row-table {
+        margin-bottom:50px;
+        border-top:3px solid rgba(0,0,0,.1);
+        border-bottom:3px solid rgba(0,0,0,.1);
+    }
+    .row-table > div:nth-child(odd){
+        background-color: rgba(0,0,0,.1);
+    }
+
+}

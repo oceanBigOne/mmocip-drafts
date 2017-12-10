@@ -4,10 +4,42 @@
 
 {% block body %}
     {{ parent() }}
-   <h1>Liste des utilisateurs</h1>
-    <ul>
-        {% for user in users %}
-            <li><a href="#">{{ user.pseudo }}</a></li>
-        {% endfor %}
-    </ul>
+    <h1>Liste des utilisateurs</h1>
+    <form method="post">
+        <hr class="mb-5">
+        <div class="row  d-none d-sm-flex">
+            <div class="col-sm-6 col-md-8"><h5>Pseudo</h5></div>
+            <div class="col-sm-3 col-md-2"><h5>Sélectionné</h5></div>
+            <div class="col-sm-3 col-md-2 text-right"><h5>Edition</h5></div>
+        </div>
+
+            {% for user in users %}
+                <div class="row row-table">
+                    <div class="col-4 d-sm-none  overflow-hidden">Pseudo :</div>
+                    <div class="col-8 col-sm-6 col-md-8 text-ellipsis overflow-hidden" title="{{ user.pseudo }}">{{ user.pseudo }}</div>
+                    <div class="col-4 d-sm-none overflow-hidden">Sélection :</div>
+                    <div class="col-8 col-sm-3 col-md-2">
+                        <span class="d-sm-none"></span>
+                        <label class="custom-control custom-checkbox">
+                            <input type="radio" class="custom-control-input" name="user" value="{{ user.id }}">
+                            <span class="custom-control-indicator"></span>
+                        </label>
+                    </div>
+                    <div class="col-4 d-sm-none text-ellipsis overflow-hidden">Edition :</div>
+                    <div class="col-8 col-sm-3 col-md-2">
+                        <a href="#" class="btn btn-secondary btn-sm float-sm-right"><i class="fa fa-pencil-square-o"
+                                                                                     aria-hidden="true"></i></a></div>
+                </div>
+
+
+            {% endfor %}
+
+
+        <div class="text-center"><a href="" class="btn btn-primary  float-sm-right mt-5">Ajouter</a></div>
+
+
+    </form>
+
+
+
 {% endblock %}

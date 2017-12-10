@@ -41,7 +41,7 @@ module.exports = function(grunt) {
             web: {
                 files: [{
                     'dist/css/vendor.min.css': [
-                        'node_modules/font-awesome/css/font-awesome.css',
+                        'vendor/fortawesome/font-awesome/css/font-awesome.css',
                         'node_modules/bootstrap/dist/css/bootstrap.css',
                         'node_modules/toastr/build/toastr.css'
                     ]
@@ -58,13 +58,7 @@ module.exports = function(grunt) {
             web: {
                 files: [{
                     flatten: true,
-                    cwd: 'node_modules/font-awesome/',
-                    src: ['**/*.otf', '**/*.ttf', '**/*.eot', '**/*.svg','**/*.woff','**/*.woff2'],
-                    dest: 'dist/fonts',
-                    expand: true
-                }, {
-                    flatten: true,
-                    cwd: 'node_modules/bootstrap/',
+                    cwd: 'vendor/fortawesome/font-awesome/fonts',
                     src: ['**/*.otf', '**/*.ttf', '**/*.eot', '**/*.svg','**/*.woff','**/*.woff2'],
                     dest: 'dist/fonts',
                     expand: true

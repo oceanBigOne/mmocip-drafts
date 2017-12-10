@@ -14,8 +14,7 @@
     "grunt-contrib-watch": "1.0.0"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-beta",
-    "fontawesome": "^4.7.2",
+    "bootstrap": "^4.0.0-beta.2",
     "jquery": "^3.2.1",
     "popper.js": "^1.12.5",
     "toastr": "^2.1.2"
