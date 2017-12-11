@@ -1,4 +1,5 @@
 RewriteEngine on
+RewriteBase /
 
 #Redirection par langue (par odre de préférence)
 RewriteCond %{HTTP:Accept-Language} ^fr [NC]
