@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-4 d-sm-none text-ellipsis overflow-hidden">Edition :</div>
                     <div class="col-8 col-sm-3 col-md-2">
-                        <a href="#" class="btn btn-secondary btn-sm float-sm-right"><i class="fa fa-pencil-square-o"
+                        <a href="{{  get_path_of('user',{"lang":'fr',"id":user.id,"name":user.pseudo|toPath }) }}" class="btn btn-secondary btn-sm float-sm-right"><i class="fa fa-pencil-square-o"
                                                                                      aria-hidden="true"></i></a></div>
                 </div>
 
@@ -35,7 +35,7 @@
             {% endfor %}
 
 
-        <div class="text-center"><a href="" class="btn btn-primary  float-sm-right mt-5">Ajouter</a></div>
+        <div class="text-center"><a href="{{  get_path_of('user',{"lang":'fr',"id":0,"name":"user" }) }}" class="btn btn-primary  float-sm-right mt-5">Ajouter</a></div>
 
 
     </form>

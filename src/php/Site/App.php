@@ -48,11 +48,14 @@ class App
         $this->routes[]=['GET','/{lang:fr}/debats[/]','debats'];
         $this->routes[]=['GET','/{lang:en}/debates[/]','debats'];
 
-        $this->routes[]=['GET','/{lang:fr}/debat/{id:\d+}/{name}[/]','debat'];
+        $this->routes[]=['GET','/{lang:fr}/debatons/{id:\d+}/{name}[/]','debat'];
         $this->routes[]=['GET','/{lang:en}/debate/{id:\d+}/{name}[/]','debat'];
 
         $this->routes[]=['GET','/{lang:fr}/utilisateurs[/]','users'];
         $this->routes[]=['GET','/{lang:en}/users[/]','users'];
+
+        $this->routes[]=['GET','/{lang:fr}/utilisateur/{id:\d+}/{name}[/]','user'];
+        $this->routes[]=['GET','/{lang:en}/user/{id:\d+}/{name}[/]','user'];
 
     }
 
@@ -290,7 +293,7 @@ class App
                             }
 
                         }
-                        if($value!="" && $match ){
+                        if($value!=="" && $match ){
                             $out.=$value."/";
 
                         }else{
