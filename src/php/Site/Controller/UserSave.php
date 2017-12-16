@@ -9,7 +9,7 @@ use Site\Model\User as UserModel;
  *
  * @package Site\Controller
  */
-Class User implements IController {
+Class UserSave implements IController {
 
     /**
      * @param array $data donnée en provenance de l'URL
@@ -17,12 +17,6 @@ Class User implements IController {
      */
     public function run(array $data):array{
         $dataTemplate=[];
-
-        if($data["id"]!=0){
-            $dataTemplate["user"]=UserModel::where('id', '=', $data["id"])->get()[0];
-        }else{
-            $dataTemplate["user"]=new UserModel();
-        }
 
         return $dataTemplate;
     }

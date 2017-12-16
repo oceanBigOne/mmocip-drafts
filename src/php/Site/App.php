@@ -57,6 +57,9 @@ class App
         $this->routes[]=['GET','/{lang:fr}/utilisateur/{id:\d+}/{name}[/]','user'];
         $this->routes[]=['GET','/{lang:en}/user/{id:\d+}/{name}[/]','user'];
 
+        $this->routes[]=['GET','/{lang:fr}/utilisateur/sauvegarde[/]','userSave'];
+        $this->routes[]=['GET','/{lang:en}/user/save[/]','userSave'];
+
     }
 
     /**

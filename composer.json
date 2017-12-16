@@ -4,7 +4,8 @@
         "nikic/fast-route": "1.2",
         "twig/twig": "1.35",
         "illuminate/database": "^5.5",
-        "fortawesome/font-awesome": "^4.7"
+        "fortawesome/font-awesome": "^4.7",
+        "siriusphp/validation": "^2.2"
     },
     "autoload":{
         "psr-4": {
