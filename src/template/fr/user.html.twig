@@ -4,7 +4,7 @@
 
 {% block body %}
     {{ parent() }}
-    <h1>Utilisateur</h1>
+    <h1>Utilisateur {{ test }}</h1>
 <form action="{{  get_path_of('userSave',{"lang":'fr' }) }}" method="post" data-action="ajax" >
     <input type="hidden" id="id" name="id" value="{{  user.id }}" >
     <input type="hidden" id="delete" name="delete" value="false" >

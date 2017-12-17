@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d516243b7d0448e43450ba9e0e0ac0c",
+    "content-hash": "82f87e069eedc5621ba328082985badb",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -326,6 +326,53 @@
             "time": "2017-10-17T12:18:29+00:00"
         },
         {
+            "name": "nannehuiges/jsend",
+            "version": "v2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/NanneHuiges/JSend.git",
+                "reference": "8a1a923056ae46bb63d3ffad7c884df75a4d3216"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/NanneHuiges/JSend/zipball/8a1a923056ae46bb63d3ffad7c884df75a4d3216",
+                "reference": "8a1a923056ae46bb63d3ffad7c884df75a4d3216",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "justinrainbow/json-schema": "~1.5",
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JSend": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nanne Huiges",
+                    "email": "nanne@huiges.nl",
+                    "role": "Current maintainer"
+                }
+            ],
+            "description": "A simple PHP implementation of the JSend specification.",
+            "homepage": "https://github.com/NanneHuiges/jsend",
+            "keywords": [
+                "jsend",
+                "json"
+            ],
+            "time": "2015-12-24T10:13:23+00:00"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "1.22.1",
             "source": {
@@ -625,16 +672,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.3.13",
+            "version": "v3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "373e553477e55cd08f8b86b74db766c75b987fdb"
+                "reference": "4c5d5582baf2829751a5207659329c1f52eedeb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/373e553477e55cd08f8b86b74db766c75b987fdb",
-                "reference": "373e553477e55cd08f8b86b74db766c75b987fdb",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/4c5d5582baf2829751a5207659329c1f52eedeb6",
+                "reference": "4c5d5582baf2829751a5207659329c1f52eedeb6",
                 "shasum": ""
             },
             "require": {
@@ -643,13 +690,16 @@
             },
             "conflict": {
                 "symfony/config": "<2.8",
-                "symfony/yaml": "<3.3"
+                "symfony/dependency-injection": "<3.4",
+                "symfony/yaml": "<3.4"
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/config": "~2.8|~3.0",
-                "symfony/intl": "^2.8.18|^3.2.5",
-                "symfony/yaml": "~3.3"
+                "symfony/config": "~2.8|~3.0|~4.0",
+                "symfony/dependency-injection": "~3.4|~4.0",
+                "symfony/finder": "~2.8|~3.0|~4.0",
+                "symfony/intl": "^2.8.18|^3.2.5|~4.0",
+                "symfony/yaml": "~3.4|~4.0"
             },
             "suggest": {
                 "psr/log": "To use logging capability in translator",
@@ -659,7 +709,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                    "dev-master": "3.4-dev"
                 }
             },
             "autoload": {
@@ -686,7 +736,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-11-07T14:12:55+00:00"
+            "time": "2017-12-12T08:27:14+00:00"
         },
         {
             "name": "twig/twig",

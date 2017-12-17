@@ -17,7 +17,6 @@ Class UserSave implements IController {
      */
     public function run(array $data):array{
         $dataTemplate=[];
-
         return $dataTemplate;
     }
 }

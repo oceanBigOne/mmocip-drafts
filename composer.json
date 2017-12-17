@@ -5,7 +5,8 @@
         "twig/twig": "1.35",
         "illuminate/database": "^5.5",
         "fortawesome/font-awesome": "^4.7",
-        "siriusphp/validation": "^2.2"
+        "siriusphp/validation": "^2.2",
+        "nannehuiges/jsend": "^2.1"
     },
     "autoload":{
         "psr-4": {
