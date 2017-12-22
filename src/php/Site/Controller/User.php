@@ -24,19 +24,6 @@ Class User implements IController {
             $dataTemplate["user"]=new UserModel();
         }
 
-
-        /*putenv('LC_ALL=fr_FR');
-        setlocale(LC_ALL, 'fr_FR');
-
-        $pathToDomain = substr(__DIR__,0,-20) .DIRECTORY_SEPARATOR."locales";
-        if ($pathToDomain != bindtextdomain("mmocip-draft", $pathToDomain)) {
-
-        }else {
-        }
-
-        textdomain("mmocip-draft");
-        $dataTemplate["test"]=_("bonjour");*/
-
         return $dataTemplate;
     }
 }
