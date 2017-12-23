@@ -57,8 +57,8 @@ class App
         $this->routes[]=['GET','/{lang:fr}/utilisateur/{id:\d+}/{name}[/]','user'];
         $this->routes[]=['GET','/{lang:en}/user/{id:\d+}/{name}[/]','user'];
 
-        $this->routes[]=['GET','/{lang:fr}/utilisateur/sauvegarde[/]','userSave'];
-        $this->routes[]=['GET','/{lang:en}/user/save[/]','userSave'];
+        $this->routes[]=[['GET', 'POST'],'/{lang:fr}/{extension:json}/utilisateur/sauvegarde[/]','userSave'];
+        $this->routes[]=[['GET', 'POST'],'/{lang:en}/{extension:json}/user/save[/]','userSave'];
 
     }
 
@@ -136,7 +136,12 @@ class App
                     $vars["lang"]="fr"; //todo detecter langue navigateur ?
                 }
                 $path= $vars["lang"]."/".$handler.".html.twig";
-
+               // var_dump($vars);
+              if(isset($vars["extension"])){
+                if($vars["extension"]=="json"){
+                    $path="fr/json.html.twig";
+                }
+              }
                 //todo : redirection 301 sur les changements de noms dans les liens
                 /*if($this->getPathOf($handler,$vars)!=$uri){
                     header("Status: 301 Moved Permanently", false, 301);
@@ -150,6 +155,7 @@ class App
                   // $urlFR=$this->getPathOf($handler,$dataUrl);
                   // echo "Undefined route ... Maybe try another language : <a href='".$urlFR."'>$urlFR</a>";
                    header("HTTP/1.0 404 Not Found");
+
 
                 }
                 break;
@@ -254,6 +260,9 @@ class App
         $revertedRoutes=[];
         foreach($this->routes as $route){
             $routeMethod=$route[0];
+            if(is_array($routeMethod)){
+                $routeMethod=$route[0][0];
+            }
             $routeRegex=$route[1];
             $routeController=$route[2];
             if( $routeController == $controller && ( strtolower($routeMethod)=="get" || strtolower($routeMethod)=="post" )){
@@ -267,10 +276,29 @@ class App
             $out="";
             $match=true;
             $regex=str_replace('[/]','',$regex);
-            $dirs=explode("/",$regex);
+            $dirstmp= explode("/",$regex);
+            $dirs=[];
+            foreach($dirstmp as $dir) {
+                if(strstr($dir,".")) {
+                    $n=0;
+                    $dirstmppoint=explode(".",$dir);
+                    foreach($dirstmppoint as $dirpoint){
+                        if($n==count($dirstmppoint)){
+                            array_push($dirs,$dirpoint);
+                        }else{
+                            array_push($dirs,$dirpoint.".");
+                        }
+                        $n++;
+                    }
+
+                }else{
+                    array_push($dirs,$dir);
+                }
+            }
             foreach($dirs as $dir){
 
                 if(strstr($dir,"{")){
+
                     $dir=str_replace(['{','}'],['',''],$dir);
                     $param=explode(":",$dir);
                     $field=$param[0];

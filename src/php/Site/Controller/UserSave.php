@@ -1,6 +1,6 @@
 <?php
 namespace Site\Controller;
-use Site\Model\User as UserModel;
+use JSend\JSendResponse as JSendResponse;
 
 /**
  * Class Users
@@ -17,6 +17,13 @@ Class UserSave implements IController {
      */
     public function run(array $data):array{
         $dataTemplate=[];
+        $data=[];
+        $success = new JSendResponse('success', $data);
+
+
+        //$fail = new JSendResponse('fail', $data);
+        //$error = new JSendResponse('error', $data, 'Not cool.', 9001);
+        $dataTemplate["json"]=(string) $success;
         return $dataTemplate;
     }
 }
