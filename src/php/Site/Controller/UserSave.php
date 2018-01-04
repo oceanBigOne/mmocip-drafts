@@ -16,14 +16,26 @@ Class UserSave implements IController {
      * @return array données à transmettre au twig
      */
     public function run(array $data):array{
-        $dataTemplate=[];
-        $data=[];
-        $success = new JSendResponse('success', $data);
 
+        $dataResponse=[];
+        $validator = new \Sirius\Validation\Validator;
 
-        //$fail = new JSendResponse('fail', $data);
-        //$error = new JSendResponse('error', $data, 'Not cool.', 9001);
-        $dataTemplate["json"]=(string) $success;
-        return $dataTemplate;
+        // add a validation rule
+        $validator->add('pseudo','required',null,"Les champs suivi de * sont obligatoires");
+        $validator->add('login','required',null,"Les champs suivi de * sont obligatoires");
+
+        if ($validator->validate($data)) {
+            $dataResponse["message"]="Utilisateur sauvegardé";
+            $response = new JSendResponse('success',$dataResponse);
+        } else {
+            $messages=$validator->getMessages();
+            $dataResponse["message"]=reset($messages);
+            $dataResponse=array_merge($dataResponse,$validator->getMessages());
+            $response = new JSendResponse('fail',$dataResponse);
+
+        }
+
+        $response->respond();
+        return [];
     }
 }

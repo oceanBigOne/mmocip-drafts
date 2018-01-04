@@ -131,6 +131,10 @@ class App
                 $handler = $routeInfo[1];
                 $vars = $routeInfo[2];
                 $controller= $this->loadController($handler);
+
+                if(count($_POST)>0){
+                    $vars=array_merge($vars,$_POST);
+                }
                 $data=$controller->run($vars);
                 if(!isset($vars["lang"])){
                     $vars["lang"]="fr"; //todo detecter langue navigateur ?
@@ -139,6 +143,7 @@ class App
                // var_dump($vars);
               if(isset($vars["extension"])){
                 if($vars["extension"]=="json"){
+                    header('Content-Type: application/json');
                     $path="fr/json.html.twig";
                 }
               }

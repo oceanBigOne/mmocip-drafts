@@ -10,7 +10,7 @@
     <input type="hidden" id="delete" name="delete" value="false" >
     <div class="form-group">
         <label for="pseudo">Pseudo</label>
-        <input type="text" class="form-control" id="pseudo" value="{{ user.pseudo }}" placeholder="Entrez ici le pseudo de l'utilisateur">
+        <input type="text" class="form-control" id="pseudo" name="pseudo" value="{{ user.pseudo }}" placeholder="Entrez ici le pseudo de l'utilisateur">
     </div>
     <div class="row">
         <div class="col-sm-4 text-center "><a href="{{ get_path_of('users',{"lang":'fr'}) }}" role="button" class="btn btn-block btn-secondary  float-sm-left mt-5">Retour</a></div>
