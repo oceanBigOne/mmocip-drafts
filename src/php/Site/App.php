@@ -8,6 +8,8 @@ namespace Site;
 
 
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Site\Service\ConfigService;
+use Site\Service\SessionService;
 use Site\TwigExtension\PathOfController;
 use Twig\TwigFilter as Twig_Filter;
 
@@ -43,22 +45,22 @@ class App
     public function __construct()
     {
 
-        $this->routes[]=['GET','/{lang:en|fr}[/]','home'];
+        $this->routes[]=['GET','/{lang:en_EN|fr_FR}[/]','home'];
 
-        $this->routes[]=['GET','/{lang:fr}/debats[/]','debats'];
-        $this->routes[]=['GET','/{lang:en}/debates[/]','debats'];
+        $this->routes[]=['GET','/{lang:fr_FR}/debats[/]','debats'];
+        $this->routes[]=['GET','/{lang:en_EN}/debates[/]','debats'];
 
-        $this->routes[]=['GET','/{lang:fr}/debatons/{id:\d+}/{name}[/]','debat'];
-        $this->routes[]=['GET','/{lang:en}/debate/{id:\d+}/{name}[/]','debat'];
+        $this->routes[]=['GET','/{lang:fr_FR}/debatons/{id:\d+}/{name}[/]','debat'];
+        $this->routes[]=['GET','/{lang:en_EN}/debate/{id:\d+}/{name}[/]','debat'];
 
-        $this->routes[]=['GET','/{lang:fr}/utilisateurs[/]','users'];
-        $this->routes[]=['GET','/{lang:en}/users[/]','users'];
+        $this->routes[]=['GET','/{lang:fr_FR}/utilisateurs[/]','users'];
+        $this->routes[]=['GET','/{lang:en_EN}/users[/]','users'];
 
-        $this->routes[]=['GET','/{lang:fr}/utilisateur/{id:\d+}/{name}[/]','user'];
-        $this->routes[]=['GET','/{lang:en}/user/{id:\d+}/{name}[/]','user'];
+        $this->routes[]=['GET','/{lang:fr_FR}/utilisateur/{id:\d+}/{name}[/]','user'];
+        $this->routes[]=['GET','/{lang:en_EN}/user/{id:\d+}/{name}[/]','user'];
 
-        $this->routes[]=[['GET', 'POST'],'/{lang:fr}/{extension:json}/utilisateur/sauvegarde[/]','userSave'];
-        $this->routes[]=[['GET', 'POST'],'/{lang:en}/{extension:json}/user/save[/]','userSave'];
+        $this->routes[]=[['GET', 'POST'],'/{lang:fr_FR}/{extension:json}/utilisateur/sauvegarde[/]','userSave'];
+        $this->routes[]=[['GET', 'POST'],'/{lang:en_EN}/{extension:json}/user/save[/]','userSave'];
 
     }
 
@@ -118,14 +120,12 @@ class App
 
         switch ($routeInfo[0]) {
             case \FastRoute\Dispatcher::NOT_FOUND:
-                // ... 404 Not Found
-               // echo "Undefined route ...";
                 header("HTTP/1.0 404 Not Found");
 
                 break;
             case \FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
                 $allowedMethods = $routeInfo[1];
-                // ... 405 Method Not Allowed
+                header("HTTP/1.0 405 Method Not Allowed");
                 break;
             case \FastRoute\Dispatcher::FOUND:
                 $handler = $routeInfo[1];
@@ -137,14 +137,15 @@ class App
                 }
                 $data=$controller->run($vars);
                 if(!isset($vars["lang"])){
-                    $vars["lang"]="fr"; //todo detecter langue navigateur ?
+                    $vars["lang"]=ConfigService::get("default-locale");
                 }
+                SessionService::set("current-locale",$vars["lang"]);
                 $path= $vars["lang"]."/".$handler.".html.twig";
                // var_dump($vars);
               if(isset($vars["extension"])){
                 if($vars["extension"]=="json"){
                     header('Content-Type: application/json');
-                    $path="fr/json.html.twig";
+                    $path="fr_FR/json.html.twig";
                 }
               }
                 //todo : redirection 301 sur les changements de noms dans les liens
@@ -155,11 +156,19 @@ class App
                try{
                     echo $twig->render($path,$data);
                 }catch(\Twig_Error_Loader $e){
-                   //$dataUrl=$vars;
-                   //$dataUrl["lang"]="fr";
-                  // $urlFR=$this->getPathOf($handler,$dataUrl);
-                  // echo "Undefined route ... Maybe try another language : <a href='".$urlFR."'>$urlFR</a>";
-                   header("HTTP/1.0 404 Not Found");
+                   try{
+                       $path= ConfigService::get("default-locale")."/".$handler.".html.twig";
+                       echo $twig->render($path,$data);
+                   }catch(\Twig_Error_Loader $e){
+                       //$dataUrl=$vars;
+                       //$dataUrl["lang"]="fr";
+                       // $urlFR=$this->getPathOf($handler,$dataUrl);
+                       // echo "Undefined route ... Maybe try another language : <a href='".$urlFR."'>$urlFR</a>";
+                       //var_dump($vars);
+                       //echo $e;
+                        header("HTTP/1.0 404 Not Found");
+                   }
+
 
 
                 }

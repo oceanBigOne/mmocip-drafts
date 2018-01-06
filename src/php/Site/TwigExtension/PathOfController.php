@@ -6,6 +6,7 @@
 namespace Site\TwigExtension;
 
 use Site\App;
+use Site\Service\SessionService;
 
 class PathOfController extends \Twig_Extension
 {
@@ -20,6 +21,9 @@ class PathOfController extends \Twig_Extension
     public function getPathOf($controller,$param=[])
     {
         $app=new App();
+        if(!isset($param["lang"])){
+            $param["lang"]=SessionService::get("current-locale");
+        }
         return $app->getPathOf($controller,$param);
     }
 

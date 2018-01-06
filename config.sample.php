@@ -11,3 +11,5 @@ $CONFIG["bdd"]= [
     'collation' => 'utf8_unicode_ci',
     'prefix'    => '',
 ];
+
+$CONFIG["default-locale"]='fr_FR';
