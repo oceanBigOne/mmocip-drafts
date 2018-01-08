@@ -12,6 +12,8 @@ use Site\Service\ConfigService;
 use Site\Service\SessionService;
 use Site\TwigExtension\PathOfController;
 use Twig\TwigFilter as Twig_Filter;
+use Gettext\Translator;
+use Gettext\Translations;
 
 /**
  * Class App
@@ -45,22 +47,22 @@ class App
     public function __construct()
     {
 
-        $this->routes[]=['GET','/{lang:en_EN|fr_FR}[/]','home'];
+        $this->routes[]=['GET','/{lang:en_US|fr_FR}[/]','home'];
 
         $this->routes[]=['GET','/{lang:fr_FR}/debats[/]','debats'];
-        $this->routes[]=['GET','/{lang:en_EN}/debates[/]','debats'];
+        $this->routes[]=['GET','/{lang:en_US}/debates[/]','debats'];
 
         $this->routes[]=['GET','/{lang:fr_FR}/debatons/{id:\d+}/{name}[/]','debat'];
-        $this->routes[]=['GET','/{lang:en_EN}/debate/{id:\d+}/{name}[/]','debat'];
+        $this->routes[]=['GET','/{lang:en_US}/debate/{id:\d+}/{name}[/]','debat'];
 
         $this->routes[]=['GET','/{lang:fr_FR}/utilisateurs[/]','users'];
-        $this->routes[]=['GET','/{lang:en_EN}/users[/]','users'];
+        $this->routes[]=['GET','/{lang:en_US}/users[/]','users'];
 
         $this->routes[]=['GET','/{lang:fr_FR}/utilisateur/{id:\d+}/{name}[/]','user'];
-        $this->routes[]=['GET','/{lang:en_EN}/user/{id:\d+}/{name}[/]','user'];
+        $this->routes[]=['GET','/{lang:en_US}/user/{id:\d+}/{name}[/]','user'];
 
         $this->routes[]=[['GET', 'POST'],'/{lang:fr_FR}/{extension:json}/utilisateur/sauvegarde[/]','userSave'];
-        $this->routes[]=[['GET', 'POST'],'/{lang:en_EN}/{extension:json}/user/save[/]','userSave'];
+        $this->routes[]=[['GET', 'POST'],'/{lang:en_US}/{extension:json}/user/save[/]','userSave'];
 
     }
 
@@ -79,6 +81,7 @@ class App
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
         $DB->enableQueryLog();
+
 
 
 
@@ -141,6 +144,39 @@ class App
                 }
                 SessionService::set("current-locale",$vars["lang"]);
                 $path= $vars["lang"]."/".$handler.".html.twig";
+
+
+
+                //multilangue
+                $localeFilePO='../src/locales/LC_MESSAGES/'.$vars["lang"].'/'.ConfigService::get("textdomain").'.po';
+                $localeFilePOPublic='../dist/locales/LC_MESSAGES/'.$vars["lang"].'/'.ConfigService::get("textdomain").'.po';
+                $localeFilePhp='../dist/locales/LC_MESSAGES/'.$vars["lang"].'/'.ConfigService::get("textdomain").'.php';
+                $localeFileMo='../dist/locales/LC_MESSAGES/'.$vars["lang"].'/'.ConfigService::get("textdomain").'.mo';
+
+                $bPhpFileIsUpToDate=false;
+                if(file_exists($localeFilePhp)){
+                    if(filemtime($localeFilePO)<filemtime($localeFilePhp)){
+                        $bPhpFileIsUpToDate=true;
+                    }
+                }else{
+                    if(!is_dir('../dist/locales/LC_MESSAGES/'.$vars["lang"].'/')){
+                        mkdir('../dist/locales/LC_MESSAGES/'.$vars["lang"].'/',0777,true);
+                    }
+                }
+                if( !$bPhpFileIsUpToDate ){
+                    $translations = Translations::fromPoFile($localeFilePO);
+                    $translations->toPhpArrayFile($localeFilePhp);
+                    $translations->toMoFile($localeFileMo);
+                    copy($localeFilePO,$localeFilePOPublic);
+                }
+                $t = new Translator();
+
+                //Load your translations (exported as PhpArray):
+                $t->loadTranslations($localeFilePhp);
+
+                $t->register();
+
+
                // var_dump($vars);
               if(isset($vars["extension"])){
                 if($vars["extension"]=="json"){

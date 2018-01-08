@@ -13,3 +13,4 @@ $CONFIG["bdd"]= [
 ];
 
 $CONFIG["default-locale"]='fr_FR';
+$CONFIG["textdomain"]='mmocip';

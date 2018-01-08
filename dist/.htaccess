@@ -5,7 +5,7 @@ RewriteBase /
 RewriteCond %{HTTP:Accept-Language} ^fr [NC]
 RewriteRule ^$ /fr_FR [L,R=301]
 RewriteCond %{HTTP:Accept-Language} ^en [NC]
-RewriteRule ^$ /en_EN [L,R=301]
+RewriteRule ^$ /en_US [L,R=301]
 
 #Redirection Fastroute
 RewriteCond %{REQUEST_FILENAME} !-d
