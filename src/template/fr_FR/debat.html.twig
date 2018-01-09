@@ -4,7 +4,7 @@
 
 {% block body %}
     {{ parent() }}
-    <h1>{% rans %}Débat : {% endtrans %}{{ debat.title }}</h1>
+    <h1>{% trans %}Débat : {% endtrans %}{{ debat.title }}</h1>
    <hr />
     <ul>
         {% for element in debat.elements %}

@@ -17,6 +17,6 @@ class Node_Trans extends \Twig_Extensions_Node_Trans
      */
     protected function getTransFunction($plural)
     {
-        return $plural ? '__' : '__';
+        return $plural ? 'n__' : '__';
     }
 }

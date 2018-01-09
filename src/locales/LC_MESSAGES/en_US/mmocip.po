@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-01-09 10:10+0100\n"
-"PO-Revision-Date: 2018-01-09 10:10+0100\n"
+"POT-Creation-Date: 2018-01-09 11:08+0100\n"
+"PO-Revision-Date: 2018-01-09 11:09+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -25,13 +25,13 @@ msgstr "Home"
 msgid "Présentation du projet ..."
 msgstr "Project presentation"
 
+#: template/fr_FR/debat.html.twig:7
+msgid "Débat :"
+msgstr "Debate:"
+
 #: template/fr_FR/debats.html.twig:7
 msgid "Liste des débats"
 msgstr "List of debates"
-
-#: template/fr_FR/home.html.twig:9
-msgid "Bonjour, comment ca va ?"
-msgstr "Hello how are you ?"
 
 #: template/fr_FR/include/menu.html.twig:10
 msgid "Débats"
@@ -45,7 +45,7 @@ msgstr "Users"
 msgid "Utilisateur"
 msgstr "User"
 
-#: template/fr_FR/user.html.twig:12 template/fr_FR/users.html.twig:11
+#: template/fr_FR/user.html.twig:12 template/fr_FR/users.html.twig:18
 msgid "Pseudo"
 msgstr "User Name"
 
@@ -69,27 +69,39 @@ msgstr "Confirm"
 msgid "Liste des utilisateurs"
 msgstr "List of users"
 
-#: template/fr_FR/users.html.twig:12
+#: template/fr_FR/users.html.twig:8
+#, fuzzy
+#| msgid "Bonjour, <b>comment</b> ca va ?"
+msgid "Bonjour, comment ca va ?"
+msgstr "Hello how are you ?"
+
+#: template/fr_FR/users.html.twig:11
+msgid "Il y a un utilisateur"
+msgid_plural "Il y a %count% utilisateurs"
+msgstr[0] "There is one user"
+msgstr[1] "There is %count% users"
+
+#: template/fr_FR/users.html.twig:19
 msgid "Sélectionné"
 msgstr "Selected"
 
-#: template/fr_FR/users.html.twig:13
+#: template/fr_FR/users.html.twig:20
 msgid "Edition"
 msgstr "Edit"
 
-#: template/fr_FR/users.html.twig:18
+#: template/fr_FR/users.html.twig:25
 msgid "Pseudo :"
 msgstr "Alias:"
 
-#: template/fr_FR/users.html.twig:20
+#: template/fr_FR/users.html.twig:27
 msgid "Sélection :"
 msgstr "Selection:"
 
-#: template/fr_FR/users.html.twig:28
+#: template/fr_FR/users.html.twig:35
 msgid "Edition :"
 msgstr "Edition:"
 
-#: template/fr_FR/users.html.twig:38
+#: template/fr_FR/users.html.twig:45
 msgid "Ajouter"
 msgstr "Add"
 
