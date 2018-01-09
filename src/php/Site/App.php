@@ -8,12 +8,9 @@ namespace Site;
 
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use Site\Service\ConfigService;
-use Site\Service\SessionService;
-use Site\TwigExtension\PathOfController;
+use Site\Twig\Extension\PathOfController;
+use Site\Twig\Extension\I18n;
 use Twig\TwigFilter as Twig_Filter;
-use Gettext\Translator;
-use Gettext\Translations;
 
 /**
  * Class App
@@ -40,6 +37,11 @@ class App
     private $routeDispatcher=null;
 
     /**
+     * @var array
+     */
+    private $routeInfo=[];
+
+    /**
      * App constructor.
      *
      * Initialise l'ensemble des routes
@@ -47,45 +49,17 @@ class App
     public function __construct()
     {
 
-        $this->routes[]=['GET','/{lang:en_US|fr_FR}[/]','home'];
 
-        $this->routes[]=['GET','/{lang:fr_FR}/debats[/]','debats'];
-        $this->routes[]=['GET','/{lang:en_US}/debates[/]','debats'];
-
-        $this->routes[]=['GET','/{lang:fr_FR}/debatons/{id:\d+}/{name}[/]','debat'];
-        $this->routes[]=['GET','/{lang:en_US}/debate/{id:\d+}/{name}[/]','debat'];
-
-        $this->routes[]=['GET','/{lang:fr_FR}/utilisateurs[/]','users'];
-        $this->routes[]=['GET','/{lang:en_US}/users[/]','users'];
-
-        $this->routes[]=['GET','/{lang:fr_FR}/utilisateur/{id:\d+}/{name}[/]','user'];
-        $this->routes[]=['GET','/{lang:en_US}/user/{id:\d+}/{name}[/]','user'];
-
-        $this->routes[]=[['GET', 'POST'],'/{lang:fr_FR}/{extension:json}/utilisateur/sauvegarde[/]','userSave'];
-        $this->routes[]=[['GET', 'POST'],'/{lang:en_US}/{extension:json}/user/save[/]','userSave'];
 
     }
 
     /**
-     * Run
-     *
-     * Selectionne le contoleur et le template twig à afficher
+     *  définis et parse les routes de l'application
      */
-    public function run($CONFIG){
+    public function parseRoute($routes){
 
-        //bdd
-        $capsule = new Capsule;
-        $DB=$capsule->getDatabaseManager();
+        $this->routes=$routes;
 
-        $capsule->addConnection($CONFIG["bdd"]);
-        $capsule->setAsGlobal();
-        $capsule->bootEloquent();
-        $DB->enableQueryLog();
-
-
-
-
-        //parse toutes les routes
         $this->routeDispatcher = \FastRoute\simpleDispatcher(function(\FastRoute\RouteCollector $r)  {
             foreach($this->routes as $route){
                 $r->addRoute($route[0], $route[1], $route[2]);
@@ -93,7 +67,7 @@ class App
             $this->routeCollector=$r;
         });
 
-        // Fetch method and URI from somewhere
+
         $httpMethod = $_SERVER['REQUEST_METHOD'];
         $uri = $_SERVER['REQUEST_URI'];
 
@@ -103,6 +77,36 @@ class App
         }
         $uri = rawurldecode($uri);
 
+        //selectionne la route
+        $this->routeInfo=$this->routeDispatcher->dispatch($httpMethod, $uri);
+    }
+
+    /**
+     * Renvoi le tableau contenant les éléments de la route
+     * @return array route info [0]= code de retour, [1]= nom du controlleur, [2]= array avec les paramètres
+     */
+    public function getRouteInfo(){
+        return $this->routeInfo;
+    }
+
+    /**
+     * Run
+     *
+     * Selectionne le contoleur et le template twig à afficher
+     */
+    public function run($config_bdd,$locale,$defaultLocale){
+
+        //bdd
+        $capsule = new Capsule;
+        $DB=$capsule->getDatabaseManager();
+
+        $capsule->addConnection($config_bdd);
+        $capsule->setAsGlobal();
+        $capsule->bootEloquent();
+        $DB->enableQueryLog();
+
+        // Fetch method and URI from somewhere
+        $routeInfo= $this->getRouteInfo();
 
         //TWIG
         $loader = new \Twig_Loader_Filesystem('../src/template');
@@ -110,12 +114,10 @@ class App
             'cache' =>false,
         ));
         //FLITRES TWIG
-        $twig->addFilter(new Twig_Filter('toPath', 'Site\TwigFilter\FormatString::toPath'));
+        $twig->addFilter(new Twig_Filter('toPath', 'Site\Twig\Filter\FormatString::toPath'));
         $twig->addExtension( new PathOfController());
+        $twig->addExtension(new I18n());
 
-
-        //selectionne la route
-        $routeInfo =  $this->routeDispatcher->dispatch($httpMethod, $uri);
 
         if(isset($routeInfo[1])){
             $twig->addGlobal("controller",$routeInfo[1]);
@@ -139,42 +141,8 @@ class App
                     $vars=array_merge($vars,$_POST);
                 }
                 $data=$controller->run($vars);
-                if(!isset($vars["lang"])){
-                    $vars["lang"]=ConfigService::get("default-locale");
-                }
-                SessionService::set("current-locale",$vars["lang"]);
-                $path= $vars["lang"]."/".$handler.".html.twig";
 
-
-
-                //multilangue
-                $localeFilePO='../src/locales/LC_MESSAGES/'.$vars["lang"].'/'.ConfigService::get("textdomain").'.po';
-                $localeFilePOPublic='../dist/locales/LC_MESSAGES/'.$vars["lang"].'/'.ConfigService::get("textdomain").'.po';
-                $localeFilePhp='../dist/locales/LC_MESSAGES/'.$vars["lang"].'/'.ConfigService::get("textdomain").'.php';
-                $localeFileMo='../dist/locales/LC_MESSAGES/'.$vars["lang"].'/'.ConfigService::get("textdomain").'.mo';
-
-                $bPhpFileIsUpToDate=false;
-                if(file_exists($localeFilePhp)){
-                    if(filemtime($localeFilePO)<filemtime($localeFilePhp)){
-                        $bPhpFileIsUpToDate=true;
-                    }
-                }else{
-                    if(!is_dir('../dist/locales/LC_MESSAGES/'.$vars["lang"].'/')){
-                        mkdir('../dist/locales/LC_MESSAGES/'.$vars["lang"].'/',0777,true);
-                    }
-                }
-                if( !$bPhpFileIsUpToDate ){
-                    $translations = Translations::fromPoFile($localeFilePO);
-                    $translations->toPhpArrayFile($localeFilePhp);
-                    $translations->toMoFile($localeFileMo);
-                    copy($localeFilePO,$localeFilePOPublic);
-                }
-                $t = new Translator();
-
-                //Load your translations (exported as PhpArray):
-                $t->loadTranslations($localeFilePhp);
-
-                $t->register();
+                $path= $locale."/".$handler.".html.twig";
 
 
                // var_dump($vars);
@@ -193,7 +161,7 @@ class App
                     echo $twig->render($path,$data);
                 }catch(\Twig_Error_Loader $e){
                    try{
-                       $path= ConfigService::get("default-locale")."/".$handler.".html.twig";
+                       $path= $defaultLocale."/".$handler.".html.twig";
                        echo $twig->render($path,$data);
                    }catch(\Twig_Error_Loader $e){
                        //$dataUrl=$vars;
@@ -204,9 +172,6 @@ class App
                        //echo $e;
                         header("HTTP/1.0 404 Not Found");
                    }
-
-
-
                 }
                 break;
         }

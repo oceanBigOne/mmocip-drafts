@@ -3,10 +3,11 @@
  * Project : mmocip-drafts
  * File : PathOfController.php
  */
-namespace Site\TwigExtension;
+namespace Site\Twig\Extension;
 
 use Site\App;
 use Site\Service\SessionService;
+use Site\Service\RouteService;
 
 class PathOfController extends \Twig_Extension
 {
@@ -21,10 +22,12 @@ class PathOfController extends \Twig_Extension
     public function getPathOf($controller,$param=[])
     {
         $app=new App();
-        if(!isset($param["lang"])){
-            $param["lang"]=SessionService::get("current-locale");
+        $app->parseRoute(RouteService::get());
+        if(!isset($param["locale"])){
+            $param["locale"]=SessionService::get("current-locale");
         }
         return $app->getPathOf($controller,$param);
+
     }
 
     public function getName()

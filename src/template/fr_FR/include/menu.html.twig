@@ -4,13 +4,13 @@
     {% set active=controller|lower %}
 
     <li class="nav-item {% if active=="home"   %} active {% endif %}">
-        <a class="nav-link" href="{{ get_path_of('home') }}">Accueil {{ testlangue }}</a>
+        <a class="nav-link" href="{{ get_path_of('home') }}">{% trans %}Accueil{% endtrans %}</a>
     </li>
     <li class="nav-item {% if active=="debats" or active=="debat"   %} active {% endif %}">
-        <a class="nav-link" href="{{ get_path_of('debats') }}">Débats</a>
+        <a class="nav-link" href="{{ get_path_of('debats') }}">{% trans %}Débats{% endtrans %}</a>
     </li>
     <li class="nav-item {% if active=="users"   %} active {% endif %}">
-        <a class="nav-link" href="{{ get_path_of('users') }}">Utilisateurs</a>
+        <a class="nav-link" href="{{ get_path_of('users') }}">{% trans %}Utilisateurs{% endtrans %}</a>
     </li>
 
 {% endblock %}

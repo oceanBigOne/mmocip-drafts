@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Site\TwigFilter;
+namespace Site\Twig\Filter;
 
 use Site\App;
 

@@ -4,20 +4,20 @@
 
 {% block body %}
     {{ parent() }}
-    <h1>Liste des utilisateurs</h1>
+    <h1>{%  trans %}Liste des utilisateurs{%  endtrans %}</h1>
     <form method="post">
         <hr class="mb-5">
         <div class="row  d-none d-sm-flex">
-            <div class="col-sm-6 col-md-8"><h5>Pseudo</h5></div>
-            <div class="col-sm-3 col-md-2"><h5>Sélectionné</h5></div>
-            <div class="col-sm-3 col-md-2 text-right"><h5>Edition</h5></div>
+            <div class="col-sm-6 col-md-8"><h5>{%  trans %}Pseudo{%  endtrans %}</h5></div>
+            <div class="col-sm-3 col-md-2"><h5>{%  trans %}Sélectionné{%  endtrans %}</h5></div>
+            <div class="col-sm-3 col-md-2 text-right"><h5>{% trans %}Edition{%  endtrans %}</h5></div>
         </div>
 
             {% for user in users %}
                 <div class="row row-table">
-                    <div class="col-4 d-sm-none  overflow-hidden">Pseudo :</div>
+                    <div class="col-4 d-sm-none  overflow-hidden">{% trans %}Pseudo :{%  endtrans %}</div>
                     <div class="col-8 col-sm-6 col-md-8 text-ellipsis overflow-hidden" title="{{ user.pseudo }}">{{ user.pseudo }}</div>
-                    <div class="col-4 d-sm-none overflow-hidden">Sélection :</div>
+                    <div class="col-4 d-sm-none overflow-hidden">{%  trans %}Sélection :{%  endtrans %}</div>
                     <div class="col-8 col-sm-3 col-md-2">
                         <span class="d-sm-none"></span>
                         <label class="custom-control custom-checkbox">
@@ -25,7 +25,7 @@
                             <span class="custom-control-indicator"></span>
                         </label>
                     </div>
-                    <div class="col-4 d-sm-none text-ellipsis overflow-hidden">Edition :</div>
+                    <div class="col-4 d-sm-none text-ellipsis overflow-hidden">{%  trans %}Edition :{%  endtrans %}</div>
                     <div class="col-8 col-sm-3 col-md-2">
                         <a href="{{  get_path_of('user',{"id":user.id,"name":user.pseudo|toPath }) }}" class="btn btn-secondary btn-sm float-sm-right"><i class="fa fa-pencil-square-o"
                                                                                      aria-hidden="true"></i></a></div>
@@ -35,7 +35,7 @@
             {% endfor %}
 
 
-        <div class="text-center"><a href="{{  get_path_of('user',{"id":0,"name":"user" }) }}" class="btn btn-primary  float-sm-right mt-5">Ajouter</a></div>
+        <div class="text-center"><a href="{{  get_path_of('user',{"id":0,"name":"user" }) }}" class="btn btn-primary  float-sm-right mt-5">{% trans %}Ajouter{%  endtrans %}</a></div>
 
 
     </form>

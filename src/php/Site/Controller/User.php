@@ -24,7 +24,7 @@ Class User implements IController {
             $dataTemplate["user"]=new UserModel();
         }
 
-        $dataTemplate["testlangue"]=_('testlangue');
+
         return $dataTemplate;
     }
 }

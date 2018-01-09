@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-01-08 08:49+0100\n"
-"PO-Revision-Date: 2018-01-08 08:49+0100\n"
+"POT-Creation-Date: 2018-01-09 09:43+0100\n"
+"PO-Revision-Date: 2018-01-09 09:43+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -12,9 +12,88 @@ msgstr ""
 "X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __\n"
 "X-Poedit-SearchPath-0: php\n"
 "X-Poedit-SearchPath-1: template\n"
 
-#: php/Site/Controller/User.php:27
-msgid "testlangue"
-msgstr "TEXTE FR"
+#: template/en_US/home.html.twig:7 template/fr_FR/home.html.twig:7
+#: template/fr_FR/include/menu.html.twig:7
+msgid "Accueil"
+msgstr "Accueil"
+
+#: template/en_US/home.html.twig:8
+msgid "Présentation du projet ..."
+msgstr "Présentation du projet ..."
+
+#: template/fr_FR/debats.html.twig:7
+msgid "Liste des débats"
+msgstr "Liste des débats"
+
+#: template/fr_FR/include/menu.html.twig:10
+msgid "Débats"
+msgstr "Débats"
+
+#: template/fr_FR/include/menu.html.twig:13
+msgid "Utilisateurs"
+msgstr "Utilisateurs"
+
+#: template/fr_FR/user.html.twig:7
+msgid "Utilisateur"
+msgstr "Utilisateur"
+
+#: template/fr_FR/user.html.twig:12 template/fr_FR/users.html.twig:11
+msgid "Pseudo"
+msgstr "Pseudo"
+
+#: template/fr_FR/user.html.twig:13
+msgid "Entrez ici le pseudo de l'utilisateur"
+msgstr "Entrez ici le pseudo de l'utilisateur"
+
+#: template/fr_FR/user.html.twig:16
+msgid "Retour"
+msgstr "Retour"
+
+#: template/fr_FR/user.html.twig:19
+msgid "Supprimer"
+msgstr "Supprimer"
+
+#: template/fr_FR/user.html.twig:21
+msgid "Valider"
+msgstr "Valider"
+
+#: template/fr_FR/users.html.twig:7
+msgid "Liste des utilisateurs"
+msgstr "Liste des utilisateurs"
+
+#: template/fr_FR/users.html.twig:12
+msgid "Sélectionné"
+msgstr "Sélectionné"
+
+#: template/fr_FR/users.html.twig:13
+msgid "Edition"
+msgstr "Edition"
+
+#: template/fr_FR/users.html.twig:18
+msgid "Pseudo :"
+msgstr "Pseudo :"
+
+#: template/fr_FR/users.html.twig:20
+msgid "Sélection :"
+msgstr "Sélection :"
+
+#: template/fr_FR/users.html.twig:28
+msgid "Edition :"
+msgstr "Edition :"
+
+#: template/fr_FR/users.html.twig:38
+msgid "Ajouter"
+msgstr "Ajouter"
+
+#~ msgid "English version"
+#~ msgstr "English version"
+
+#~ msgid "testlangue"
+#~ msgstr "TEXTE FR"
+
+#~ msgid "testlanguetwig"
+#~ msgstr "TEXTE TWIG"
