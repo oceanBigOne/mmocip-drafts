@@ -17,9 +17,14 @@ $app=new \Site\App();
 $app->parseRoute(RouteService::get());
 
 //detection locale
-$locale = $app->getRouteInfo()[2]["locale"];
-SessionService::set("current-locale",$locale);
-require 'locale-detect.php';
-//run
-$app->run(ConfigService::get("bdd"),SessionService::get("current-locale"),ConfigService::get("default-locale"));
+$vars = $app->getRouteInfo();
+if(isset($vars[2]) && isset($vars[2]["locale"]) ) {
+    $locale=$vars[2]["locale"];
+    SessionService::set("current-locale", $locale);
+    require 'locale-detect.php';
+    //run
+    $app->run(ConfigService::get("bdd"), SessionService::get("current-locale"), ConfigService::get("default-locale"));
+}else{
+    header("HTTP/1.0 404 Not Found");
+}
 

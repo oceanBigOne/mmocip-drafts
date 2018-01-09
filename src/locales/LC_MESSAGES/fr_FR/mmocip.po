@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-01-09 09:43+0100\n"
-"PO-Revision-Date: 2018-01-09 09:43+0100\n"
+"POT-Creation-Date: 2018-01-09 10:09+0100\n"
+"PO-Revision-Date: 2018-01-09 10:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -21,13 +21,17 @@ msgstr ""
 msgid "Accueil"
 msgstr "Accueil"
 
-#: template/en_US/home.html.twig:8
+#: template/en_US/home.html.twig:8 template/fr_FR/home.html.twig:8
 msgid "Présentation du projet ..."
 msgstr "Présentation du projet ..."
 
 #: template/fr_FR/debats.html.twig:7
 msgid "Liste des débats"
 msgstr "Liste des débats"
+
+#: template/fr_FR/home.html.twig:9
+msgid "Bonjour, comment ca va ?"
+msgstr "Bonjour, comment ca va ?"
 
 #: template/fr_FR/include/menu.html.twig:10
 msgid "Débats"
