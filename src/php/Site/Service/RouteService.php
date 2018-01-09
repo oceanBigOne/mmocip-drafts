@@ -7,6 +7,8 @@
 namespace Site\Service;
 
 
+use Site\App;
+
 class RouteService
 {
     /**
@@ -18,4 +20,23 @@ class RouteService
 
         return $ROUTES;
     }
+
+    /**
+     *  @return mixed
+     */
+    public static function getPathOf(string $controller,array $param=[]):string
+    {
+
+        $app=new App();
+        $app->parseRoute(RouteService::get());
+        if(!isset($param["locale"])){
+            $param["locale"]=SessionService::get("current-locale");
+        }
+        return $app->getPathOf($controller,$param);
+
+
+    }
+
+
+
 }

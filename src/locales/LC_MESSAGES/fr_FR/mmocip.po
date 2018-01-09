@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-01-09 10:09+0100\n"
-"PO-Revision-Date: 2018-01-09 10:10+0100\n"
+"POT-Creation-Date: 2018-01-09 14:21+0100\n"
+"PO-Revision-Date: 2018-01-09 14:21+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -16,6 +16,22 @@ msgstr ""
 "X-Poedit-SearchPath-0: php\n"
 "X-Poedit-SearchPath-1: template\n"
 
+#: php/Site/Controller/UserSave.php:24
+msgid "Les champs suivi de * sont obligatoires"
+msgstr "Les champs suivi de * sont obligatoires"
+
+#: php/Site/Controller/UserSave.php:25
+msgid "Le champs pseudo doit avoir au moins 2 caractères"
+msgstr "Le champs pseudo doit avoir au moins 2 caractères"
+
+#: php/Site/Controller/UserSave.php:26
+msgid "Le champs pseudo doit avoir moins de 10 caractères"
+msgstr "Le champs pseudo doit avoir moins de 10 caractères"
+
+#: php/Site/Controller/UserSave.php:29
+msgid "Utilisateur sauvegardé correctement."
+msgstr "Utilisateur sauvegardé correctement"
+
 #: template/en_US/home.html.twig:7 template/fr_FR/home.html.twig:7
 #: template/fr_FR/include/menu.html.twig:7
 msgid "Accueil"
@@ -25,13 +41,13 @@ msgstr "Accueil"
 msgid "Présentation du projet ..."
 msgstr "Présentation du projet ..."
 
+#: template/fr_FR/debat.html.twig:7
+msgid "Débat :"
+msgstr "Débat :"
+
 #: template/fr_FR/debats.html.twig:7
 msgid "Liste des débats"
 msgstr "Liste des débats"
-
-#: template/fr_FR/home.html.twig:9
-msgid "Bonjour, comment ca va ?"
-msgstr "Bonjour, comment ca va ?"
 
 #: template/fr_FR/include/menu.html.twig:10
 msgid "Débats"
@@ -45,7 +61,7 @@ msgstr "Utilisateurs"
 msgid "Utilisateur"
 msgstr "Utilisateur"
 
-#: template/fr_FR/user.html.twig:12 template/fr_FR/users.html.twig:11
+#: template/fr_FR/user.html.twig:12 template/fr_FR/users.html.twig:19
 msgid "Pseudo"
 msgstr "Pseudo"
 
@@ -65,33 +81,52 @@ msgstr "Supprimer"
 msgid "Valider"
 msgstr "Valider"
 
-#: template/fr_FR/users.html.twig:7
+#: template/fr_FR/users.html.twig:8
 msgid "Liste des utilisateurs"
 msgstr "Liste des utilisateurs"
 
+#: template/fr_FR/users.html.twig:9
+msgid "Bonjour, comment ca va ?"
+msgstr "Bonjour, comment ca va ?"
+
 #: template/fr_FR/users.html.twig:12
+msgid "Il y a un utilisateur"
+msgid_plural "Il y a %count% utilisateurs"
+msgstr[0] "Il y a un utilisateur"
+msgstr[1] "Il y a %count% utilisateurs"
+
+#: template/fr_FR/users.html.twig:20
 msgid "Sélectionné"
 msgstr "Sélectionné"
 
-#: template/fr_FR/users.html.twig:13
+#: template/fr_FR/users.html.twig:21
 msgid "Edition"
 msgstr "Edition"
 
-#: template/fr_FR/users.html.twig:18
+#: template/fr_FR/users.html.twig:26
 msgid "Pseudo :"
 msgstr "Pseudo :"
 
-#: template/fr_FR/users.html.twig:20
+#: template/fr_FR/users.html.twig:28
 msgid "Sélection :"
 msgstr "Sélection :"
 
-#: template/fr_FR/users.html.twig:28
+#: template/fr_FR/users.html.twig:36
 msgid "Edition :"
 msgstr "Edition :"
 
-#: template/fr_FR/users.html.twig:38
+#: template/fr_FR/users.html.twig:46
 msgid "Ajouter"
 msgstr "Ajouter"
+
+#~ msgid "Le champs pseudo doit moins de moins 10 caractères"
+#~ msgstr "Le champs pseudo doit moins de moins 10 caractères"
+
+#~ msgid "10 caractères maximum"
+#~ msgstr "10 caractères maximum"
+
+#~ msgid "3 caractères minimum"
+#~ msgstr "3 caractères minimum"
 
 #~ msgid "English version"
 #~ msgstr "English version"

@@ -21,12 +21,7 @@ class PathOfController extends \Twig_Extension
 
     public function getPathOf($controller,$param=[])
     {
-        $app=new App();
-        $app->parseRoute(RouteService::get());
-        if(!isset($param["locale"])){
-            $param["locale"]=SessionService::get("current-locale");
-        }
-        return $app->getPathOf($controller,$param);
+        return RouteService::getPathOf($controller,$param);
 
     }
 

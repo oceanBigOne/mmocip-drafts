@@ -3,6 +3,9 @@ main{
     padding-top:100px;
 }
 
+.message-loader{
+    display:none;
+}
 .overflow-hidden{
     white-space: nowrap;
     overflow: hidden;

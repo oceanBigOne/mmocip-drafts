@@ -122,6 +122,7 @@ class App
         if(isset($routeInfo[1])){
             $twig->addGlobal("controller",$routeInfo[1]);
         }
+        $twig->addGlobal("locale",$locale);
 
         switch ($routeInfo[0]) {
             case \FastRoute\Dispatcher::NOT_FOUND:
@@ -265,6 +266,8 @@ class App
     public function getRoutes():array{
         return $this->routes;
     }
+
+
 
     /**
      * Renvoi la route d'un controlleur spécifique

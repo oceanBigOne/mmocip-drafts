@@ -1,8 +1,5 @@
 module.exports = function(grunt) {
 
-
-
-
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
         uglify:{
@@ -20,7 +17,8 @@ module.exports = function(grunt) {
                         'vendor/kzam/kzamengine-frameworkjquery/dist/KzamFrameworkJquery.min.js'
                     ]},
                     {'dist/js/app.min.js' : [
-                        'src/js/**/*.js'
+                        'src/js/**/*.js',
+                        'src/js/pace/**/*.js'
                     ]}
 
                 ]
@@ -29,7 +27,7 @@ module.exports = function(grunt) {
         },
         watch:{
             js: {
-                files: ['src/js/**/*.js'],
+                files: ['src/js/**/*.js','src/js/pace/**/*.js'],
                 tasks: ['uglify:web']
             },
             css: {
