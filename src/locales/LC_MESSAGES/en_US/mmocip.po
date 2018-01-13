@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-01-09 14:21+0100\n"
-"PO-Revision-Date: 2018-01-09 14:22+0100\n"
+"POT-Creation-Date: 2018-01-13 20:00+0100\n"
+"PO-Revision-Date: 2018-01-13 20:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -16,19 +16,19 @@ msgstr ""
 "X-Poedit-SearchPath-0: php\n"
 "X-Poedit-SearchPath-1: template\n"
 
-#: php/Site/Controller/UserSave.php:24
+#: php/Site/Controller/UserSave.php:29
 msgid "Les champs suivi de * sont obligatoires"
 msgstr "Fields followed by * are required"
 
-#: php/Site/Controller/UserSave.php:25
+#: php/Site/Controller/UserSave.php:30
 msgid "Le champs pseudo doit avoir au moins 2 caractères"
 msgstr "The username field must be at least 2 characters"
 
-#: php/Site/Controller/UserSave.php:26
+#: php/Site/Controller/UserSave.php:31
 msgid "Le champs pseudo doit avoir moins de 10 caractères"
 msgstr "The username field must be less than 10 characters"
 
-#: php/Site/Controller/UserSave.php:29
+#: php/Site/Controller/UserSave.php:38
 msgid "Utilisateur sauvegardé correctement."
 msgstr "User saved correctly."
 
@@ -57,11 +57,27 @@ msgstr "Debates"
 msgid "Utilisateurs"
 msgstr "Users"
 
+#: template/fr_FR/message/system/delete.html.twig:5
+msgid "ATTENTION"
+msgstr "NOTICEBOARD"
+
+#: template/fr_FR/message/system/delete.html.twig:11
+msgid "Êtes-vous sur de vouloir supprimer cet élément ?"
+msgstr "Are you sure you want to remove this item?"
+
+#: template/fr_FR/message/system/delete.html.twig:14
+msgid "non"
+msgstr "no"
+
+#: template/fr_FR/message/system/delete.html.twig:15
+msgid "oui"
+msgstr "yes"
+
 #: template/fr_FR/user.html.twig:7
 msgid "Utilisateur"
 msgstr "User"
 
-#: template/fr_FR/user.html.twig:12 template/fr_FR/users.html.twig:19
+#: template/fr_FR/user.html.twig:12 template/fr_FR/users.html.twig:23
 msgid "Pseudo"
 msgstr "User Name"
 
@@ -85,7 +101,7 @@ msgstr "Confirm"
 msgid "Liste des utilisateurs"
 msgstr "List of users"
 
-#: template/fr_FR/users.html.twig:9
+#: template/fr_FR/users.html.twig:10
 msgid "Bonjour, comment ca va ?"
 msgstr "Hello how are you ?"
 
@@ -95,27 +111,27 @@ msgid_plural "Il y a %count% utilisateurs"
 msgstr[0] "There is one user"
 msgstr[1] "There is %count% users"
 
-#: template/fr_FR/users.html.twig:20
+#: template/fr_FR/users.html.twig:24
 msgid "Sélectionné"
 msgstr "Selected"
 
-#: template/fr_FR/users.html.twig:21
+#: template/fr_FR/users.html.twig:25
 msgid "Edition"
 msgstr "Edit"
 
-#: template/fr_FR/users.html.twig:26
+#: template/fr_FR/users.html.twig:30
 msgid "Pseudo :"
 msgstr "Alias:"
 
-#: template/fr_FR/users.html.twig:28
+#: template/fr_FR/users.html.twig:32
 msgid "Sélection :"
 msgstr "Selection:"
 
-#: template/fr_FR/users.html.twig:36
+#: template/fr_FR/users.html.twig:40
 msgid "Edition :"
 msgstr "Edition:"
 
-#: template/fr_FR/users.html.twig:46
+#: template/fr_FR/users.html.twig:50
 msgid "Ajouter"
 msgstr "Add"
 

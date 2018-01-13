@@ -1,0 +1,19 @@
+<div class="modal fade" id="{{ idModal }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{% trans %}ATTENTION{% endtrans %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {% trans %}Êtes-vous sur de vouloir supprimer cet élément ?{% endtrans %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">{% trans %}non{% endtrans %}</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" data-action="delete" data-id="{{ id }}" data-model="{{ model }}">{% trans %}oui{% endtrans %}</button>
+            </div>
+        </div>
+    </div>
+</div>
