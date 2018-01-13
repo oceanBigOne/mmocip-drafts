@@ -7,8 +7,18 @@ $(document).ready(function(){
         if(!type){
             type="error";
         }
-        toastr[type]($messageLoader.html());
+        messageTop(type,$messageLoader.html());
     }
 
 
 });
+
+
+function messageTop(type,message){
+    toastr[type](message);
+}
+
+
+function messageModal(reference){
+
+}

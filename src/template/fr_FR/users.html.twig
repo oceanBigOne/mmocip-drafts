@@ -6,12 +6,14 @@
     {{ parent() }}
     {%  set nbUsers=users|length %}
     <h1>{%  trans %}Liste des utilisateurs{%  endtrans %}</h1>
+   <!--
     <p>{% trans %}Bonjour, comment ca va ?{% endtrans %} {{ nbUsers }}</p>
-    <p>{% trans %}
+    <<p>{% trans %}
         Il y a un utilisateur
         {% plural nbUsers %}
         Il y a {{ count }} utilisateurs
         {% endtrans %}</p>
+        -->
 
 
 
@@ -31,7 +33,7 @@
                     <div class="col-8 col-sm-3 col-md-2">
                         <span class="d-sm-none"></span>
                         <label class="custom-control custom-checkbox">
-                            <input type="radio" class="custom-control-input" name="user" value="{{ user.id }}">
+                            <input type="radio" class="custom-control-input" name="user" value="{{ user.id }}" {%  if user.id==checked_user_id %} checked="checked" {% endif %}>
                             <span class="custom-control-indicator"></span>
                         </label>
                     </div>

@@ -29,8 +29,9 @@ $(document).ready(function(){
                             }
                         }
 
-                        if (type!=="prompt") {
-                            toastr[type](response.data.message);
+                        if (type!=="question") {
+                            messageTop(type,response.data.message);
+                            //toastr[type](response.data.message);
                         } else {
                            //TODO MODAL !
                         }
@@ -64,7 +65,7 @@ $(document).ready(function(){
 
                 },
                 error: function () {
-                    toastr["error"]("Unknow error !");
+                    messageTop("error","Unknow error !");
                     setTimeout(function(){ $form.data('submited', false);},1000);
                 }
             });
