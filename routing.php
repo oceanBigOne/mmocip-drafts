@@ -4,6 +4,7 @@ $ROUTES=[];
 $ROUTES[]=[['GET', 'POST'],'/{locale:en_US|fr_FR}[/]','home'];
 
 $ROUTES[]=[['GET', 'POST'],'/{locale:en_US|fr_FR}/message[/]','message'];
+$ROUTES[]=[['GET', 'POST'],'/{locale:en_US|fr_FR}/all-messages[/]','allMessages'];
 
 $ROUTES[]=[['GET', 'POST'],'/{locale:fr_FR}/debats[/]','debats'];
 $ROUTES[]=[['GET', 'POST'],'/{locale:en_US}/debates[/]','debats'];

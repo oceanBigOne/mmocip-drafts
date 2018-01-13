@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes" >
+    <meta name="format-detection" content="telephone=no" >
+    <meta name="HandheldFriendly" content="true" >
+    <meta name="viewport" content="width = device-width,initial-scale = 1,minimum-scale = 1,maximum-scale = 1,  user-scalable=no" >
+    <title>MESSAGE</title>
+    <link rel="stylesheet" href="/css/vendor.min.css">
+    <style>
+        .modal {
+            margin-top:100px;
+            position: relative;
+            top: auto;
+            right: auto;
+            bottom: auto;
+            left: auto;
+            display: block;
+            overflow: visible;
+            outline: 0;
+        }
+
+        .fade {
+             opacity: 1;
+
+        }
+    </style>
+</head>
+<body>
+
+<main class="container" >
+    <p>&nbsp;</p>
+    Number of files : {{  files|length }}
+    <hr />
+    {% for file in files %}
+        <hr /><b>{{ loop.index }}) {{ file }}</b>
+        {% include file %}
+    {% endfor %}
+</main>
+<script type="text/javascript" src="/js/vendor.min.js"></script>
+</body>
+</html>
+
+
