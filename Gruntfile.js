@@ -13,7 +13,7 @@ module.exports = function(grunt) {
                         'node_modules/popper.js/dist/umd/popper.js',
                         'node_modules/bootstrap/dist/js/bootstrap.js',
                         'node_modules/toastr/toastr.js',
-                        'node_modules/bootbox/bootbox.js',
+                        'node_modules/js-md5/src/md5.js',
                         'vendor/kzam/kzamengine-frameworkjquery/dist/KzamFrameworkJquery.min.js'
                     ]},
                     {'dist/js/app.min.js' : [

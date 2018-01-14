@@ -14,13 +14,11 @@ class Message implements IController {
      * @return array données à transmettre au twig
      */
     public function run(array $data):array{
-        $dataTemplate=$data;
-        if(!isset($data["messageRef"])){
-            $data["messageRef"]="system/no-message";
-        }
-        $dataTemplate["messageRef"]= $data["messageRef"];
-        $dataTemplate["idModal"]= str_replace("/","-",$data["messageRef"]);
 
+        if(!isset($data["modal_ref"])){
+            $data["modal_ref"]="system/no-message";
+        }
+        $dataTemplate=$data;
         return $dataTemplate;
     }
 }
