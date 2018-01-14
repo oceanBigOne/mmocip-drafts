@@ -32,6 +32,7 @@ Class Users implements IController {
             $rand=random_int(0,count($dataTemplate["users"])-1);
             $user=$dataTemplate["users"][$rand];
             SessionService::set("user_id",$user->id);
+            SessionService::set("user_pseudo",$user->pseudo);
         }
         $dataTemplate["checked_user_id"]=SessionService::get("user_id");
         return $dataTemplate;

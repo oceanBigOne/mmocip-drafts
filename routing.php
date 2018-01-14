@@ -20,3 +20,6 @@ $ROUTES[]=[['GET', 'POST'],'/{locale:en_US}/user/{id:\d+}/{name}[/]','user'];
 
 $ROUTES[]=[['GET', 'POST'],'/{locale:fr_FR}/{extension:json}/utilisateur/sauvegarde[/]','userSave'];
 $ROUTES[]=[['GET', 'POST'],'/{locale:en_US}/{extension:json}/user/save[/]','userSave'];
+
+$ROUTES[]=[['GET', 'POST'],'/{locale:fr_FR}/{extension:json}/utilisateur/selectionne[/]','userSelect'];
+$ROUTES[]=[['GET', 'POST'],'/{locale:en_US}/{extension:json}/user/select[/]','userSelect'];

@@ -9,6 +9,7 @@ namespace Site;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Site\Twig\Extension\PathOfController;
+use Site\Twig\Extension\Session;
 use Site\Twig\Extension\I18n;
 use Twig\TwigFilter as Twig_Filter;
 
@@ -116,6 +117,7 @@ class App
         //FLITRES TWIG
         $twig->addFilter(new Twig_Filter('toPath', 'Site\Twig\Filter\FormatString::toPath'));
         $twig->addExtension( new PathOfController());
+        $twig->addExtension( new Session());
         $twig->addExtension(new I18n());
 
 

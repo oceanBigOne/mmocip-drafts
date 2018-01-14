@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-01-13 20:00+0100\n"
-"PO-Revision-Date: 2018-01-13 20:00+0100\n"
+"POT-Creation-Date: 2018-01-14 20:10+0100\n"
+"PO-Revision-Date: 2018-01-14 20:11+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -16,21 +16,36 @@ msgstr ""
 "X-Poedit-SearchPath-0: php\n"
 "X-Poedit-SearchPath-1: template\n"
 
-#: php/Site/Controller/UserSave.php:29
+#: php/Site/Controller/UserSave.php:32
 msgid "Les champs suivi de * sont obligatoires"
 msgstr "Les champs suivi de * sont obligatoires"
 
-#: php/Site/Controller/UserSave.php:30
+#: php/Site/Controller/UserSave.php:33
 msgid "Le champs pseudo doit avoir au moins 2 caractères"
 msgstr "Le champs pseudo doit avoir au moins 2 caractères"
 
-#: php/Site/Controller/UserSave.php:31
+#: php/Site/Controller/UserSave.php:34
 msgid "Le champs pseudo doit avoir moins de 10 caractères"
 msgstr "Le champs pseudo doit avoir moins de 10 caractères"
 
-#: php/Site/Controller/UserSave.php:38
+#: php/Site/Controller/UserSave.php:46
+#| msgid "Utilisateur sauvegardé correctement."
+msgid "Utilisateur supprimé correctement."
+msgstr "Utilisateur supprimé correctement."
+
+#: php/Site/Controller/UserSave.php:48
 msgid "Utilisateur sauvegardé correctement."
 msgstr "Utilisateur sauvegardé correctement"
+
+#: php/Site/Controller/UserSelect.php:34
+#, php-format
+#| msgid "Utilisateur sauvegardé correctement."
+msgid "Utilisateur %s sélectionné."
+msgstr "Utilisateur %s sélectionné."
+
+#: php/Site/Controller/UserSelect.php:42
+msgid "L'utilisateur sélectionné n'exitse plus."
+msgstr "L'utilisateur sélectionné n'exitse plus."
 
 #: template/en_US/home.html.twig:7 template/fr_FR/home.html.twig:7
 #: template/fr_FR/include/menu.html.twig:7

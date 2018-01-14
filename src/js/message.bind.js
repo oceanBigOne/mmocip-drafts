@@ -49,9 +49,4 @@ function messageModal(reference,data,$obj){
         $modal.modal('show');
     }
 
-
-
-
-
-
 }

@@ -31,6 +31,7 @@
             {% include 'fr_FR/include/menu.html.twig' %}
         </ul>
     </div>
+    <div class="text-light pullright d-sm-none d-md-block" id="current_pseudo"> {{ session('user_pseudo') }}</div>
 </nav>
 <main class="container" >
     {% block body %}{% endblock %}
