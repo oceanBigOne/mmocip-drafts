@@ -12,9 +12,8 @@ $(document).ready(function(){
 
             Pace.restart();
             $.ajax({
-                type: "POST", data: $(this).serialize(), url: $form.attr("action"),
-                success: function (response) {
-
+                type: "POST", data: $(this).serialize(), url: $form.attr("action")})
+                .done(function (response) {
 
                     //message
                     if (typeof response.data.message !== 'undefined' && response.data.message !== null) {
@@ -29,11 +28,10 @@ $(document).ready(function(){
                             }
                         }
 
-                        if (type!=="question") {
+                        if (type!=="modal") {
                             messageTop(type,response.data.message);
-                            //toastr[type](response.data.message);
                         } else {
-                           //TODO MODAL !
+                            messageModal(response.data.message.reference,response.data.message.data,$form);
                         }
 
                     }
@@ -63,13 +61,13 @@ $(document).ready(function(){
                     //deverouille le formulaire
                     setTimeout(function(){ $form.data('submited', false);},1000);
 
-                },
-                error: function () {
+                }).fail(function(){
                     messageTop("error","Unknow error !");
                     setTimeout(function(){ $form.data('submited', false);},1000);
-                }
-            });
-            return false;
+                });
+
+        }else{
+
         }
 
     });

@@ -19,7 +19,7 @@ function messageTop(type,message){
 }
 
 
-function messageModal(reference,data){
+function messageModal(reference,data,$obj){
    // Pace.restart();
     var language = $(location).attr('pathname');
     language.indexOf(1);
@@ -30,18 +30,22 @@ function messageModal(reference,data){
     if($modal.length===0) {
         var param=jQuery.param(data);
         $.ajax({
-            type: "POST", data: "modal_id="+idModal+"&modal_ref="+reference+'&'+param, url: "/"+language+"/message/",
-            success: function (response) {
+            type: "POST", data: "modal_id="+idModal+"&modal_ref="+reference+'&'+param, url: "/"+language+"/message/"})
+            .done(function(response){
                 $('body').append(response);
                 $modal=$('#'+idModal);
                 if($modal.length<1){
                     messageTop("error","Modal undefined !");
                 }else{
+                    $obj.data("clicked",false);
                     $modal.modal('show');
                 }
-            }
-        });
+            }).fail(function(){
+                $obj.data("clicked",false);
+                messageTop("error","System error !");
+            });
     }else{
+        $obj.data("clicked",false);
         $modal.modal('show');
     }
 
