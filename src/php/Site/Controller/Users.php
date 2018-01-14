@@ -26,7 +26,7 @@ Class Users implements IController {
             $dataTemplate["messageType"]=$data["messageType"];
         }
 
-        $dataTemplate["users"]=UserModel::where('id', '!=', 0)->get();
+        $dataTemplate["users"]=UserModel::where('id', '!=', 0)->whereNull('deleted_at')->get();
 
         if(SessionService::get("user_id")==null){
             $rand=random_int(0,count($dataTemplate["users"])-1);

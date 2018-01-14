@@ -3,6 +3,7 @@ namespace Site\Controller;
 use JSend\JSendResponse as JSendResponse;
 use Site\Service\RouteService;
 use Site\Util\AjaxResponse;
+use Site\Model\User as UserModel;
 
 
 /**
@@ -25,18 +26,28 @@ Class UserSave implements IController {
 
         $validator = new \Sirius\Validation\Validator;
 
+        $user=new UserModel();
+
         // add a validation rule
         $validator->add('pseudo','required',null,__("Les champs suivi de * sont obligatoires"));
         $validator->add('pseudo','minlength',array('min' => 2),__("Le champs pseudo doit avoir au moins 2 caractères"));
-        $validator->add('pseudo','maxlength',array('max' => 10),__("Le champs pseudo doit avoir moins de 10 caractères"));
+        $validator->add('pseudo','maxlength',array('max' => 20),__("Le champs pseudo doit avoir moins de 10 caractères"));
+
         $bResult=$validator->validate($data);
         if ($bResult) {
 
+            if(isset($data["id"]) && $data["id"]!=0){
+                $user=UserModel::where('id', '=', $data["id"])->get()[0];
+            }
 
-
-            $ajaxResponse->setCallback("callbackTest",["param1","param2"],100);
-            $ajaxResponse->setRedirect(RouteService::getPathOf("users"),["messageType"=>"success","message"=>__("Utilisateur sauvegardé correctement.")],1000);
-
+            $user->pseudo=$data["pseudo"];
+            if(isset($data["delete"]) && $data["delete"]=="true"){
+                $user->deleted_at=strtotime("now");
+                $ajaxResponse->setRedirect(RouteService::getPathOf("users"),["messageType"=>"success","message"=>__("Utilisateur supprimé correctement.")],1000);
+            }else{
+                $ajaxResponse->setRedirect(RouteService::getPathOf("users"),["messageType"=>"success","message"=>__("Utilisateur sauvegardé correctement.")],1000);
+            }
+            $user->save();
             $response = new JSendResponse('success',$ajaxResponse->get());
         } else {
             $messages=$validator->getMessages();

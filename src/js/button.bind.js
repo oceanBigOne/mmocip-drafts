@@ -14,7 +14,10 @@ $(document).ready(function(){
     $body.on('click','[data-action=delete]',function(event){
         if($(this).data("clicked")!==true) {
             $(this).data("clicked", true);
-            alert("SUPPRESSION DE : " + $(this).data("model") + " ID=" + $(this).data("id"));
+            var deleteInput=$("[name=delete]");
+            deleteInput.val(true);
+            deleteInput.closest("form").submit();
+
         }
     });
 
