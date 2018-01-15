@@ -32,7 +32,7 @@ Class UserSelect implements IController {
         if(count($users)) {
             $user=$users;
             $ajaxResponse->setMessage(__("Utilisateur %s sélectionné.",$user->pseudo),"success");
-            $ajaxResponse->setCallback("updateUserPseudo",[$user->pseudo,$user->id],1000);
+            $ajaxResponse->setCallback("cb__UpdateUserPseudo",[$user->pseudo,$user->id],1000);
             $response = new JSendResponse('success',$ajaxResponse->get());
 
         }else {
