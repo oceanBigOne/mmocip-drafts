@@ -6,7 +6,7 @@ $(document).ready(function(){
     $body.on('click','[data-action=confirm-delete]',function(event){
         if($(this).data("clicked")!==true){
             $(this).data("clicked",true);
-            messageModal("system/delete",$(this).data("message-param"),$(this));
+            messageModal("system/delete",$(this).data("action-param"),$(this));
         }
 
     });

@@ -16,7 +16,7 @@
         <div class="col-sm-4 text-center "><a href="{{ get_path_of('users',{"lang":'fr'}) }}" role="button" class="btn btn-block btn-secondary  float-sm-left mt-5">{%  trans %}Retour{%  endtrans %}</a></div>
         <div class="col-sm-4 text-center">
             {%  if user.id > 0 %}
-            <button type="button" class="btn btn-block btn-danger mt-5" data-action="confirm-delete" data-message-param='{"id":{{ user.id }},"model":"user"}' >{%  trans %}Supprimer{%  endtrans %}</button>
+            <button type="button" class="btn btn-block btn-danger mt-5" data-action="confirm-delete" data-action-param='{"id":{{ user.id }},"model":"user"}' >{%  trans %}Supprimer{%  endtrans %}</button>
         {% endif %}</div>
         <div class="col-sm-4 text-center"><button type="submit" class="btn btn-block btn-primary  float-sm-right mt-5">{%  trans %}Valider{%  endtrans %}</button></div>
     </div>

@@ -15,7 +15,7 @@
 </head>
 <body>
 {% if message %}
-<div class="message-loader" data-type="{{ messageType }}">{{ message }}</div>
+<div  data-action="message-loader" data-action-param='{"type":"{{ messageType }}"}' >{{ message }}</div>
 {%  endif %}
 
 
