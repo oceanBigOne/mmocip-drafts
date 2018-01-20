@@ -52,6 +52,12 @@ class AjaxResponse
         }
     }
 
+    public function setRedirectWithMessage($url,$message="",$type="success",$data=[],$timeout=0){
+        $data["message"]=$message;
+        $data["messageType"]=$type;
+        $this->setRedirect($url,$data,$timeout);
+    }
+
 
     public function get(){
         return $this->data;

@@ -43,9 +43,9 @@ Class UserSave implements IController {
             $user->pseudo=$data["pseudo"];
             if(isset($data["delete"]) && $data["delete"]=="true"){
                 $user->deleted_at=strtotime("now");
-                $ajaxResponse->setRedirect(Route::getPathOf("users"),["messageType"=>"success","message"=>__("Utilisateur supprimé correctement.")],1000);
+                $ajaxResponse->setRedirectWithMessage(Route::getPathOf("users"),__("Utilisateur supprimé correctement."),"success",[],1000);
             }else{
-                $ajaxResponse->setRedirect(Route::getPathOf("users"),["messageType"=>"success","message"=>__("Utilisateur sauvegardé correctement.")],1000);
+                $ajaxResponse->setRedirectWithMessage(Route::getPathOf("users"),__("Utilisateur sauvegardé correctement."),"success",[],1000);
             }
             $user->save();
             $response = new JSendResponse('success',$ajaxResponse->get());
