@@ -14,7 +14,7 @@ class PathOfController extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            new \Twig_SimpleFunction('get_path_of', array($this, 'getPathOf')),
+            new \Twig_SimpleFunction('getPathOf', array($this, 'getPathOf')),
         );
     }
 
@@ -27,7 +27,7 @@ class PathOfController extends \Twig_Extension
 
     public function getName()
     {
-        return 'get_path_of';
+        return 'getPathOf';
     }
 
 }

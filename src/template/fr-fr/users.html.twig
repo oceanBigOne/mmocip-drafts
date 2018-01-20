@@ -17,7 +17,7 @@
 
 
 
-    <form action="{{  get_path_of('userSelect',{'lang':'fr','extension':'json' }) }}" method="post" data-action="ajax" autocomplete="off" >
+    <form action="{{  getPathOf('userSelect',{'lang':'fr','extension':'json' }) }}" method="post" data-action="ajax" autocomplete="off" >
         <hr class="mb-5">
         <div class="row  d-none d-sm-flex">
             <div class="col-sm-6 col-md-8"><h5>{%  trans %}Pseudo{%  endtrans %}</h5></div>
@@ -39,7 +39,7 @@
                     </div>
                     <div class="col-4 d-sm-none text-ellipsis overflow-hidden">{%  trans %}Edition :{%  endtrans %}</div>
                     <div class="col-8 col-sm-3 col-md-2">
-                        <a href="{{  get_path_of('user',{"id":user.id,"name":user.pseudo|toPath }) }}" class="btn btn-secondary btn-sm float-sm-right"><i class="fa fa-pencil-square-o"
+                        <a href="{{  getPathOf('user',{"id":user.id,"name":user.pseudo|toPath }) }}" class="btn btn-secondary btn-sm float-sm-right"><i class="fa fa-pencil-square-o"
                                                                                      aria-hidden="true"></i></a></div>
                 </div>
 
@@ -47,7 +47,7 @@
             {% endfor %}
 
 
-        <div class="text-center"><a href="{{  get_path_of('user',{"id":0,"name":"user" }) }}" class="btn btn-primary  float-sm-right mt-5">{% trans %}Ajouter{%  endtrans %}</a></div>
+        <div class="text-center"><a href="{{  getPathOf('user',{"id":0,"name":"user" }) }}" class="btn btn-primary  float-sm-right mt-5">{% trans %}Ajouter{%  endtrans %}</a></div>
 
 
     </form>
