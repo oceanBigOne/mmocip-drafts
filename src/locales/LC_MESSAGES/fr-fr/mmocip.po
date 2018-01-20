@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-01-14 20:10+0100\n"
-"PO-Revision-Date: 2018-01-14 20:11+0100\n"
+"POT-Creation-Date: 2018-01-20 15:57+0100\n"
+"PO-Revision-Date: 2018-01-20 15:57+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-KeywordsList: __\n"
@@ -29,17 +29,15 @@ msgid "Le champs pseudo doit avoir moins de 10 caractères"
 msgstr "Le champs pseudo doit avoir moins de 10 caractères"
 
 #: php/Site/Controller/UserSave.php:46
-#| msgid "Utilisateur sauvegardé correctement."
 msgid "Utilisateur supprimé correctement."
 msgstr "Utilisateur supprimé correctement."
 
 #: php/Site/Controller/UserSave.php:48
 msgid "Utilisateur sauvegardé correctement."
-msgstr "Utilisateur sauvegardé correctement"
+msgstr "Utilisateur sauvegardé correctement."
 
 #: php/Site/Controller/UserSelect.php:34
 #, php-format
-#| msgid "Utilisateur sauvegardé correctement."
 msgid "Utilisateur %s sélectionné."
 msgstr "Utilisateur %s sélectionné."
 
@@ -47,123 +45,105 @@ msgstr "Utilisateur %s sélectionné."
 msgid "L'utilisateur sélectionné n'exitse plus."
 msgstr "L'utilisateur sélectionné n'exitse plus."
 
-#: template/en_US/home.html.twig:7 template/fr_FR/home.html.twig:7
-#: template/fr_FR/include/menu.html.twig:7
+#: template/en-us/home.html.twig:7 template/fr-fr/home.html.twig:7
+#: template/fr-fr/include/menu.html.twig:7
 msgid "Accueil"
 msgstr "Accueil"
 
-#: template/en_US/home.html.twig:8 template/fr_FR/home.html.twig:8
+#: template/en-us/home.html.twig:8 template/fr-fr/home.html.twig:8
 msgid "Présentation du projet ..."
 msgstr "Présentation du projet ..."
 
-#: template/fr_FR/debat.html.twig:7
+#: template/fr-fr/debat.html.twig:7
 msgid "Débat :"
 msgstr "Débat :"
 
-#: template/fr_FR/debats.html.twig:7
+#: template/fr-fr/debats.html.twig:7
 msgid "Liste des débats"
 msgstr "Liste des débats"
 
-#: template/fr_FR/include/menu.html.twig:10
+#: template/fr-fr/include/menu.html.twig:10
 msgid "Débats"
 msgstr "Débats"
 
-#: template/fr_FR/include/menu.html.twig:13
+#: template/fr-fr/include/menu.html.twig:13
 msgid "Utilisateurs"
 msgstr "Utilisateurs"
 
-#: template/fr_FR/message/system/delete.html.twig:5
+#: template/fr-fr/message/system/delete.html.twig:5
 msgid "ATTENTION"
 msgstr "ATTENTION"
 
-#: template/fr_FR/message/system/delete.html.twig:11
+#: template/fr-fr/message/system/delete.html.twig:11
 msgid "Êtes-vous sur de vouloir supprimer cet élément ?"
 msgstr "Êtes-vous sur de vouloir supprimer cet élément ?"
 
-#: template/fr_FR/message/system/delete.html.twig:14
+#: template/fr-fr/message/system/delete.html.twig:14
 msgid "non"
 msgstr "non"
 
-#: template/fr_FR/message/system/delete.html.twig:15
+#: template/fr-fr/message/system/delete.html.twig:15
 msgid "oui"
 msgstr "oui"
 
-#: template/fr_FR/user.html.twig:7
+#: template/fr-fr/user.html.twig:7
 msgid "Utilisateur"
 msgstr "Utilisateur"
 
-#: template/fr_FR/user.html.twig:12 template/fr_FR/users.html.twig:23
+#: template/fr-fr/user.html.twig:12 template/fr-fr/users.html.twig:23
 msgid "Pseudo"
 msgstr "Pseudo"
 
-#: template/fr_FR/user.html.twig:13
+#: template/fr-fr/user.html.twig:13
 msgid "Entrez ici le pseudo de l'utilisateur"
 msgstr "Entrez ici le pseudo de l'utilisateur"
 
-#: template/fr_FR/user.html.twig:16
+#: template/fr-fr/user.html.twig:16
 msgid "Retour"
 msgstr "Retour"
 
-#: template/fr_FR/user.html.twig:19
+#: template/fr-fr/user.html.twig:19
 msgid "Supprimer"
 msgstr "Supprimer"
 
-#: template/fr_FR/user.html.twig:21
+#: template/fr-fr/user.html.twig:21
 msgid "Valider"
 msgstr "Valider"
 
-#: template/fr_FR/users.html.twig:8
+#: template/fr-fr/users.html.twig:8
 msgid "Liste des utilisateurs"
 msgstr "Liste des utilisateurs"
 
-#: template/fr_FR/users.html.twig:10
+#: template/fr-fr/users.html.twig:10
 msgid "Bonjour, comment ca va ?"
 msgstr "Bonjour, comment ca va ?"
 
-#: template/fr_FR/users.html.twig:12
+#: template/fr-fr/users.html.twig:12
 msgid "Il y a un utilisateur"
 msgid_plural "Il y a %count% utilisateurs"
-msgstr[0] "Il y a un utilisateur"
-msgstr[1] "Il y a %count% utilisateurs"
+msgstr[0] ""
+msgstr[1] ""
 
-#: template/fr_FR/users.html.twig:24
+#: template/fr-fr/users.html.twig:24
 msgid "Sélectionné"
 msgstr "Sélectionné"
 
-#: template/fr_FR/users.html.twig:25
+#: template/fr-fr/users.html.twig:25
 msgid "Edition"
 msgstr "Edition"
 
-#: template/fr_FR/users.html.twig:30
+#: template/fr-fr/users.html.twig:30
 msgid "Pseudo :"
 msgstr "Pseudo :"
 
-#: template/fr_FR/users.html.twig:32
+#: template/fr-fr/users.html.twig:32
 msgid "Sélection :"
 msgstr "Sélection :"
 
-#: template/fr_FR/users.html.twig:40
+#: template/fr-fr/users.html.twig:40
 msgid "Edition :"
 msgstr "Edition :"
 
-#: template/fr_FR/users.html.twig:50
+#: template/fr-fr/users.html.twig:50
 msgid "Ajouter"
 msgstr "Ajouter"
-
-#~ msgid "Le champs pseudo doit moins de moins 10 caractères"
-#~ msgstr "Le champs pseudo doit moins de moins 10 caractères"
-
-#~ msgid "10 caractères maximum"
-#~ msgstr "10 caractères maximum"
-
-#~ msgid "3 caractères minimum"
-#~ msgstr "3 caractères minimum"
-
-#~ msgid "English version"
-#~ msgstr "English version"
-
-#~ msgid "testlangue"
-#~ msgstr "TEXTE FR"
-
-#~ msgid "testlanguetwig"
-#~ msgstr "TEXTE TWIG"

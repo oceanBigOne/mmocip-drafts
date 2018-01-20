@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2018-01-14 20:09+0100\n"
-"PO-Revision-Date: 2018-01-14 20:10+0100\n"
+"POT-Creation-Date: 2018-01-20 15:59+0100\n"
+"PO-Revision-Date: 2018-01-20 15:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __\n"
@@ -45,119 +45,105 @@ msgstr "User %s selected."
 msgid "L'utilisateur sélectionné n'exitse plus."
 msgstr "The user selected doesn't exist anymore"
 
-#: template/en_US/home.html.twig:7 template/fr_FR/home.html.twig:7
-#: template/fr_FR/include/menu.html.twig:7
+#: template/en-us/home.html.twig:7 template/fr-fr/home.html.twig:7
+#: template/fr-fr/include/menu.html.twig:7
 msgid "Accueil"
 msgstr "Home"
 
-#: template/en_US/home.html.twig:8 template/fr_FR/home.html.twig:8
+#: template/en-us/home.html.twig:8 template/fr-fr/home.html.twig:8
 msgid "Présentation du projet ..."
 msgstr "Project presentation"
 
-#: template/fr_FR/debat.html.twig:7
+#: template/fr-fr/debat.html.twig:7
 msgid "Débat :"
 msgstr "Debate:"
 
-#: template/fr_FR/debats.html.twig:7
+#: template/fr-fr/debats.html.twig:7
 msgid "Liste des débats"
 msgstr "List of debates"
 
-#: template/fr_FR/include/menu.html.twig:10
+#: template/fr-fr/include/menu.html.twig:10
 msgid "Débats"
 msgstr "Debates"
 
-#: template/fr_FR/include/menu.html.twig:13
+#: template/fr-fr/include/menu.html.twig:13
 msgid "Utilisateurs"
 msgstr "Users"
 
-#: template/fr_FR/message/system/delete.html.twig:5
+#: template/fr-fr/message/system/delete.html.twig:5
 msgid "ATTENTION"
 msgstr "NOTICEBOARD"
 
-#: template/fr_FR/message/system/delete.html.twig:11
+#: template/fr-fr/message/system/delete.html.twig:11
 msgid "Êtes-vous sur de vouloir supprimer cet élément ?"
 msgstr "Are you sure you want to remove this item?"
 
-#: template/fr_FR/message/system/delete.html.twig:14
+#: template/fr-fr/message/system/delete.html.twig:14
 msgid "non"
 msgstr "no"
 
-#: template/fr_FR/message/system/delete.html.twig:15
+#: template/fr-fr/message/system/delete.html.twig:15
 msgid "oui"
 msgstr "yes"
 
-#: template/fr_FR/user.html.twig:7
+#: template/fr-fr/user.html.twig:7
 msgid "Utilisateur"
 msgstr "User"
 
-#: template/fr_FR/user.html.twig:12 template/fr_FR/users.html.twig:23
+#: template/fr-fr/user.html.twig:12 template/fr-fr/users.html.twig:23
 msgid "Pseudo"
 msgstr "User Name"
 
-#: template/fr_FR/user.html.twig:13
+#: template/fr-fr/user.html.twig:13
 msgid "Entrez ici le pseudo de l'utilisateur"
 msgstr "Enter here the username of the user"
 
-#: template/fr_FR/user.html.twig:16
+#: template/fr-fr/user.html.twig:16
 msgid "Retour"
 msgstr "Return"
 
-#: template/fr_FR/user.html.twig:19
+#: template/fr-fr/user.html.twig:19
 msgid "Supprimer"
 msgstr "Delete"
 
-#: template/fr_FR/user.html.twig:21
+#: template/fr-fr/user.html.twig:21
 msgid "Valider"
 msgstr "Confirm"
 
-#: template/fr_FR/users.html.twig:8
+#: template/fr-fr/users.html.twig:8
 msgid "Liste des utilisateurs"
 msgstr "List of users"
 
-#: template/fr_FR/users.html.twig:10
+#: template/fr-fr/users.html.twig:10
 msgid "Bonjour, comment ca va ?"
 msgstr "Hello how are you ?"
 
-#: template/fr_FR/users.html.twig:12
+#: template/fr-fr/users.html.twig:12
 msgid "Il y a un utilisateur"
 msgid_plural "Il y a %count% utilisateurs"
-msgstr[0] "There is one user"
-msgstr[1] "There is %count% users"
+msgstr[0] ""
+msgstr[1] ""
 
-#: template/fr_FR/users.html.twig:24
+#: template/fr-fr/users.html.twig:24
 msgid "Sélectionné"
 msgstr "Selected"
 
-#: template/fr_FR/users.html.twig:25
+#: template/fr-fr/users.html.twig:25
 msgid "Edition"
 msgstr "Edit"
 
-#: template/fr_FR/users.html.twig:30
+#: template/fr-fr/users.html.twig:30
 msgid "Pseudo :"
 msgstr "Alias:"
 
-#: template/fr_FR/users.html.twig:32
+#: template/fr-fr/users.html.twig:32
 msgid "Sélection :"
 msgstr "Selection:"
 
-#: template/fr_FR/users.html.twig:40
+#: template/fr-fr/users.html.twig:40
 msgid "Edition :"
 msgstr "Edition:"
 
-#: template/fr_FR/users.html.twig:50
+#: template/fr-fr/users.html.twig:50
 msgid "Ajouter"
 msgstr "Add"
-
-#~ msgid "English version"
-#~ msgstr "version Française"
-
-#~ msgid "testlangue"
-#~ msgstr "TEXTE EN"
-
-#~ msgid "testlanguetwig"
-#~ msgstr "TEXTE EN TWIG"
-
-#, fuzzy
-#~| msgid "testlangue"
-#~ msgid "testlangue2"
-#~ msgstr "TEXTE EN"

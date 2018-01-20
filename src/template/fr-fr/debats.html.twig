@@ -1,4 +1,4 @@
-{% extends "fr_FR/base.html.twig" %}
+{% extends "fr-fr/base.html.twig" %}
 
 {% block stylesheets %}{{ parent() }}{% endblock %}
 
@@ -7,7 +7,7 @@
     <h1>{% trans %}Liste des débats{% endtrans %}</h1>
     <ul>
         {% for debat in debats %}
-            <li><a href="{{  get_path_of('debat',{"lang":'fr',"id":debat.id,"name":debats[0].title|toPath }) }}">{{ debat.title }}</a></li>
+            <li><a href="{{  get_path_of('debat',{"lang":'fr-fr',"id":debat.id,"name":debats[0].title|toPath }) }}">{{ debat.title }}</a></li>
         {% endfor %}
     </ul>
 

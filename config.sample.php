@@ -12,5 +12,5 @@ $CONFIG["bdd"]= [
     'prefix'    => '',
 ];
 
-$CONFIG["default-locale"]='fr_FR';
+$CONFIG["default-locale"]='fr-fr';
 $CONFIG["textdomain"]='mmocip';

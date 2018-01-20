@@ -15,7 +15,7 @@ class AllMessages implements IController {
      */
     public function run(array $data):array{
 
-        $sPath="../src/template/fr_FR/message";
+        $sPath="../src/template/fr-fr/message";
 
         $dataTemplate["files"]=[];
         $directory = new \RecursiveDirectoryIterator($sPath);

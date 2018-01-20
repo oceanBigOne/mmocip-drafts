@@ -152,7 +152,7 @@ class App
               if(isset($vars["extension"])){
                 if($vars["extension"]=="json"){
                     header('Content-Type: application/json');
-                    $path="fr_FR/json.html.twig";
+                    $path="fr-fr/json.html.twig";
                 }
               }
                 //todo : redirection 301 sur les changements de noms dans les liens
