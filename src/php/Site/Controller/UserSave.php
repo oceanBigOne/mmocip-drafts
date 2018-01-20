@@ -1,7 +1,7 @@
 <?php
 namespace Site\Controller;
 use JSend\JSendResponse as JSendResponse;
-use Site\Service\RouteService;
+use Site\Service\Route;
 use Site\Util\AjaxResponse;
 use Site\Model\User as UserModel;
 
@@ -43,9 +43,9 @@ Class UserSave implements IController {
             $user->pseudo=$data["pseudo"];
             if(isset($data["delete"]) && $data["delete"]=="true"){
                 $user->deleted_at=strtotime("now");
-                $ajaxResponse->setRedirect(RouteService::getPathOf("users"),["messageType"=>"success","message"=>__("Utilisateur supprimé correctement.")],1000);
+                $ajaxResponse->setRedirect(Route::getPathOf("users"),["messageType"=>"success","message"=>__("Utilisateur supprimé correctement.")],1000);
             }else{
-                $ajaxResponse->setRedirect(RouteService::getPathOf("users"),["messageType"=>"success","message"=>__("Utilisateur sauvegardé correctement.")],1000);
+                $ajaxResponse->setRedirect(Route::getPathOf("users"),["messageType"=>"success","message"=>__("Utilisateur sauvegardé correctement.")],1000);
             }
             $user->save();
             $response = new JSendResponse('success',$ajaxResponse->get());

@@ -1,7 +1,7 @@
 <?php
 namespace Site\Controller;
 use Site\Model\User as UserModel;
-use Site\Service\SessionService;
+use Site\Service\Session;
 
 /**
  * Class Users
@@ -28,13 +28,13 @@ Class Users implements IController {
 
         $dataTemplate["users"]=UserModel::where('id', '!=', 0)->whereNull('deleted_at')->get();
 
-        if(SessionService::get("user_id")==null){
+        if(Session::get("user_id")==null){
             $rand=random_int(0,count($dataTemplate["users"])-1);
             $user=$dataTemplate["users"][$rand];
-            SessionService::set("user_id",$user->id);
-            SessionService::set("user_pseudo",$user->pseudo);
+            Session::set("user_id",$user->id);
+            Session::set("user_pseudo",$user->pseudo);
         }
-        $dataTemplate["checked_user_id"]=SessionService::get("user_id");
+        $dataTemplate["checked_user_id"]=Session::get("user_id");
         return $dataTemplate;
     }
 }

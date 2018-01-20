@@ -1,13 +1,12 @@
 <?php
+
 /**
  * Project : mmocip-drafts
- * File : SessionService.php
- */
+ * File : Session.phpamespace Site\Service;*/
 
 namespace Site\Service;
 
-
-class SessionService
+class Session
 {
     /**
      * @param string $sVarname
@@ -16,7 +15,7 @@ class SessionService
      */
     public static function set($sVarname, $mValue, $bSerialize=false)
     {
-        $sIdSite = ConfigService::get("idSite");
+        $sIdSite = Config::get("idSite");
         $key = $sIdSite.$sVarname;
 
         if( $bSerialize===true )
@@ -34,7 +33,7 @@ class SessionService
      */
     public static function get($sVarname, $bUnserialize=false)
     {
-        $sIdSite = ConfigService::get("idSite");
+        $sIdSite = Config::get("idSite");
         $key = $sIdSite.$sVarname;
         $sReturn = null;
 
@@ -55,7 +54,7 @@ class SessionService
 
     public static function clear()
     {
-        $sIdSite = ConfigService::get("idSite");
+        $sIdSite = Config::get("idSite");
         foreach($_SESSION as $sKey=>$sValue){
             if( substr($sKey,0,strlen($sIdSite))== $sIdSite){
                 $_SESSION[$sKey]=null;

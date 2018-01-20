@@ -2,13 +2,13 @@
 
 use Gettext\Translator;
 use Gettext\Translations;
-use Site\Service\ConfigService;
-use Site\Service\SessionService;
+use Site\Service\Config;
+use Site\Service\Session;
 
 
 
-$locale=SessionService::get("current-locale");
-$textdomain=ConfigService::get("textdomain");
+$locale=Session::get("current-locale");
+$textdomain=Config::get("textdomain");
 
 
 //gestion multilangue

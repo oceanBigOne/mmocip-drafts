@@ -7,24 +7,24 @@ require '../routing.php';
 
 
 
-use Site\Service\ConfigService;
-use Site\Service\RouteService;
-use Site\Service\SessionService;
+use Site\Service\Config;
+use Site\Service\Route;
+use Site\Service\Session;
 
 //initilisation de l'APP
 $app=new \Site\App();
 
 //parsage de la route
-$app->parseRoute(RouteService::get());
+$app->parseRoute(Route::get());
 
 //detection locale
 $vars = $app->getRouteInfo();
 if(isset($vars[2]) && isset($vars[2]["locale"]) ) {
     $locale=$vars[2]["locale"];
-    SessionService::set("current-locale", $locale);
+    Session::set("current-locale", $locale);
     require 'locale-detect.php';
     //run
-    $app->run(ConfigService::get("bdd"), SessionService::get("current-locale"), ConfigService::get("default-locale"));
+    $app->run(Config::get("bdd"), Session::get("current-locale"), Config::get("default-locale"));
 }else{
     header("HTTP/1.0 404 Not Found");
 }

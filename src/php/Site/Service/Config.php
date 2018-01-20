@@ -7,7 +7,7 @@
 namespace Site\Service;
 
 
-class ConfigService
+class Config
 {
     /**
      * @param string $sVarname

@@ -6,8 +6,8 @@
 namespace Site\Twig\Extension;
 
 use Site\App;
-use Site\Service\SessionService;
-use Site\Service\RouteService;
+use Site\Service\Session;
+use Site\Service\Route;
 
 class PathOfController extends \Twig_Extension
 {
@@ -21,7 +21,7 @@ class PathOfController extends \Twig_Extension
 
     public function getPathOf($controller,$param=[])
     {
-        return RouteService::getPathOf($controller,$param);
+        return Route::getPathOf($controller,$param);
 
     }
 

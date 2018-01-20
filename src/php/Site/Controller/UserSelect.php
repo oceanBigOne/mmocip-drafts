@@ -1,8 +1,8 @@
 <?php
 namespace Site\Controller;
 use JSend\JSendResponse as JSendResponse;
-use Site\Service\RouteService;
-use Site\Service\SessionService;
+use Site\Service\Route;
+use Site\Service\Session;
 use Site\Util\AjaxResponse;
 use Site\Model\User as UserModel;
 
@@ -39,12 +39,12 @@ Class UserSelect implements IController {
             $users=UserModel::where('id', '!=', 0)->whereNull('deleted_at')->get();
             shuffle($users);
             $user=$users[0];
-            $ajaxResponse->setRedirect(RouteService::getPathOf("users"),["messageType"=>"error","message"=>__("L'utilisateur sélectionné n'exitse plus.")],1000);
+            $ajaxResponse->setRedirect(Route::getPathOf("users"),["messageType"=>"error","message"=>__("L'utilisateur sélectionné n'exitse plus.")],1000);
             $response = new JSendResponse('fail', $ajaxResponse->get());
         }
 
-        SessionService::set("user_id",$user->id);
-        SessionService::set("user_pseudo",$user->pseudo);
+        Session::set("user_id",$user->id);
+        Session::set("user_pseudo",$user->pseudo);
 
         $response->respond();
         return [];

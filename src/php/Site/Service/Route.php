@@ -1,15 +1,13 @@
 <?php
 /**
  * Project : mmocip-drafts
- * File : RouteService.php
- */
+ * File : Route.phpamespace Site\Service;*/
 
 namespace Site\Service;
 
-
 use Site\App;
 
-class RouteService
+class Route
 {
     /**
      *  @return mixed
@@ -28,9 +26,9 @@ class RouteService
     {
 
         $app=new App();
-        $app->parseRoute(RouteService::get());
+        $app->parseRoute(Route::get());
         if(!isset($param["locale"])){
-            $param["locale"]=SessionService::get("current-locale");
+            $param["locale"]=Session::get("current-locale");
         }
         return $app->getPathOf($controller,$param);
 

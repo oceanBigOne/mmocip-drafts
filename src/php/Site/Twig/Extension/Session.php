@@ -7,7 +7,7 @@
 namespace Site\Twig\Extension;
 
 
-use Site\Service\SessionService;
+use Site\Service\Session as  SessionService;
 
 class Session extends \Twig_Extension
 {
