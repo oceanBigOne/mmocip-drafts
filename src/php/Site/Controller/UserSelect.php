@@ -10,7 +10,7 @@ use Site\Model\User as UserModel;
 /**
  * Class Users
  *
- * Affichage de la page USERS du site
+ * Sélectionne un user pour qu'il devienne l'utilisateur courant
  *
  * @package Site\Controller
  */

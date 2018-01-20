@@ -6,7 +6,13 @@
 
 namespace Site\Controller;
 
-
+/**
+ * Class Message
+ *
+ * Affiche un message sélectionné (paramètre POST modal_ref)
+ *
+ * @package Site\Controller
+ */
 class Message implements IController {
 
     /**

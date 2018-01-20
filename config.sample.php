@@ -1,6 +1,8 @@
 <?php
 $CONFIG=[];
 
+$CONFIG["sessiondomain"]="mmocip";
+
 $CONFIG["bdd"]= [
     'driver'    => 'mysql',
     'host'      => 'localhost',

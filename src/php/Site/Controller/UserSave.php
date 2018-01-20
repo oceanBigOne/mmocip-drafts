@@ -9,7 +9,7 @@ use Site\Model\User as UserModel;
 /**
  * Class Users
  *
- * Affichage de la page USERS du site
+ * Sauvegarde l'ajout, la modification ou la suppression d'un user
  *
  * @package Site\Controller
  */

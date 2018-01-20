@@ -1,12 +1,19 @@
 <?php
 /**
  * Project : mmocip-drafts
- * File : Route.phpamespace Site\Service;*/
+*/
 
 namespace Site\Service;
 
 use Site\App;
 
+/**
+ * Class Route
+ *
+ * Service d'accès aux routes du site
+ *
+ * @package Site\Service
+ */
 class Route
 {
     /**

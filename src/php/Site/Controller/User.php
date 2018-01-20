@@ -5,7 +5,7 @@ use Site\Model\User as UserModel;
 /**
  * Class Users
  *
- * Affichage de la page USERS du site
+ * Affiche le formulaire d'édition d'un user
  *
  * @package Site\Controller
  */

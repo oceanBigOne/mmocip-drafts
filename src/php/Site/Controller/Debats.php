@@ -4,6 +4,9 @@ use Site\Model\Debat as DebatModel;
 
 /**
  * Class Debats
+ *
+ * Affiche la page avec la liste des débats
+ *
  * @package Site\Controller
  */
 Class Debats implements IController {

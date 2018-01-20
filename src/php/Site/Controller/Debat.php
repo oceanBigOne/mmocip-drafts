@@ -12,7 +12,7 @@ use Site\Model\Element as ElementModel;
 /**
  * Class Debat
  *
- * Affichage de la page Debat du site
+ * Affiche la page de débat
  *
  * @package Site\Controller
  */

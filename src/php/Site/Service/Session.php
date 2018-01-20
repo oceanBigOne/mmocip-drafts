@@ -2,10 +2,18 @@
 
 /**
  * Project : mmocip-drafts
- * File : Session.phpamespace Site\Service;*/
+ */
 
 namespace Site\Service;
 
+/**
+ * Class Session
+ *
+ * Service d'accès aux variables de session du site
+ *
+ * @package Site\Service
+ *
+ **/
 class Session
 {
     /**
@@ -15,7 +23,7 @@ class Session
      */
     public static function set($sVarname, $mValue, $bSerialize=false)
     {
-        $sIdSite = Config::get("idSite");
+        $sIdSite = Config::get("sessiondomain");
         $key = $sIdSite.$sVarname;
 
         if( $bSerialize===true )
@@ -33,7 +41,7 @@ class Session
      */
     public static function get($sVarname, $bUnserialize=false)
     {
-        $sIdSite = Config::get("idSite");
+        $sIdSite = Config::get("sessiondomain");
         $key = $sIdSite.$sVarname;
         $sReturn = null;
 
@@ -52,9 +60,12 @@ class Session
     }
 
 
+    /**
+     *  vide toutes les variables de sessions
+     */
     public static function clear()
     {
-        $sIdSite = Config::get("idSite");
+        $sIdSite = Config::get("sessiondomain");
         foreach($_SESSION as $sKey=>$sValue){
             if( substr($sKey,0,strlen($sIdSite))== $sIdSite){
                 $_SESSION[$sKey]=null;

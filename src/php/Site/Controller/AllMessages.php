@@ -6,7 +6,13 @@
 
 namespace Site\Controller;
 
-
+/**
+ * Class AllMessages
+ *
+ * Affiche la page avec la liste de tous les messages (modal) affichés sur le site
+ *
+ * @package Site\Controller
+ */
 class AllMessages implements IController {
 
     /**

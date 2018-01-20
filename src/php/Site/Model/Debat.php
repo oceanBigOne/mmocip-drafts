@@ -10,6 +10,13 @@ namespace Site\Model;
 use Illuminate\Database\Eloquent\Model as Model;
 use Illuminate\Support\Collection;
 
+/**
+ * Class Debat
+ *
+ * Objet débat
+ *
+ * @package Site\Model
+ */
 class Debat extends Model{
 
     private $_elements=null;

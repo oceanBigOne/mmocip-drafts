@@ -6,7 +6,7 @@ use Site\Service\Session;
 /**
  * Class Users
  *
- * Affichage de la page USERS du site
+ * Affiche la liste des utilisateurs du site
  *
  * @package Site\Controller
  */

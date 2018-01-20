@@ -1,12 +1,19 @@
 <?php
 /**
  * Project : mmocip-drafts
- * File : ConfigService.php
+ * File : Config.php
  */
 
 namespace Site\Service;
 
 
+/**
+ * Class Config
+ *
+ * Service d'accès aux variables de config du site
+ *
+ * @package Site\Service
+ */
 class Config
 {
     /**

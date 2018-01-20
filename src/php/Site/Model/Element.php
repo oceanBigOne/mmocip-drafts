@@ -9,7 +9,13 @@
 namespace Site\Model;
 use Illuminate\Database\Eloquent\Model as Model;
 
-
+/**
+ * Class Element
+ *
+ * Objet élement d'un débat ( réponses, propositions, commentaires, etc...)
+ *
+ * @package Site\Model
+ */
 class Element extends Model{
 
     private $_debat=null;
