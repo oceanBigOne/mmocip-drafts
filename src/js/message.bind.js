@@ -1,13 +1,16 @@
 $(document).ready(function(){
 
     //message au chargement de la page
-    var $messageLoader=$('[data-jsbind="message-loader"]');
+    var $messageLoader=$('[data-jsbind="onload-message"]');
     if($messageLoader.length===1){
         var type=$messageLoader.data("jsbind-param").type;
+        var message=$messageLoader.data("jsbind-param").message;
         if(!type){
             type="error";
         }
-        messageTop(type,$messageLoader.html());
+        if(message!==""){
+            messageTop(type,message);
+        }
     }
 
 

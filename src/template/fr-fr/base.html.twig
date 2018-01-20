@@ -14,11 +14,7 @@
 
 </head>
 <body>
-{% if message %}
-<div  data-jsbind="message-loader" data-jsbind-param='{"type":"{{ messageType }}"}' >{{ message }}</div>
-{%  endif %}
-
-
+<input type="hidden"  data-jsbind="onload-message" data-jsbind-param='{{ getOnloadMessage() }}' >
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/">MMOCIP 01</a>

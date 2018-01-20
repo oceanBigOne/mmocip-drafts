@@ -8,6 +8,7 @@ namespace Site;
 
 
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Site\Twig\Extension\OnloadMessage;
 use Site\Twig\Extension\PathOfController;
 use Site\Twig\Extension\Session;
 use Site\Twig\Extension\I18n;
@@ -119,6 +120,7 @@ class App
         $twig->addExtension( new PathOfController());
         $twig->addExtension( new Session());
         $twig->addExtension(new I18n());
+        $twig->addExtension(new OnloadMessage());
 
 
         if(isset($routeInfo[1])){
