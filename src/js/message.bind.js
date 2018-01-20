@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
     //message au chargement de la page
-    var $messageLoader=$('[data-action="message-loader"]');
+    var $messageLoader=$('[data-jsbind="message-loader"]');
     if($messageLoader.length===1){
-        var type=$messageLoader.data("action-param").type;
+        var type=$messageLoader.data("jsbind-param").type;
         if(!type){
             type="error";
         }

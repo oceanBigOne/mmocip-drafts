@@ -3,15 +3,15 @@ $(document).ready(function(){
 
     $body=$('body');
 
-    $body.on('click','[data-action=confirm-delete]',function(event){
+    $body.on('click','[data-jsbind=confirm-delete]',function(event){
         if($(this).data("clicked")!==true){
             $(this).data("clicked",true);
-            messageModal("system/delete",$(this).data("action-param"),$(this));
+            messageModal("system/delete",$(this).data("jsbind-param"),$(this));
         }
 
     });
 
-    $body.on('click','[data-action=delete]',function(event){
+    $body.on('click','[data-jsbind=delete]',function(event){
         if($(this).data("clicked")!==true) {
             $(this).data("clicked", true);
             var deleteInput=$("[name=delete]");

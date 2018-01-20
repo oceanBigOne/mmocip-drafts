@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-    $('[data-action=ajax]').submit(function(event){
+    $('[data-jsbind=ajax]').submit(function(event){
         var $form=$(this);
         event.preventDefault();
 
