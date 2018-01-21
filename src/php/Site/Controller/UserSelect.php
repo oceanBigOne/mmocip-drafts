@@ -14,7 +14,7 @@ use Site\Model\User as UserModel;
  *
  * @package Site\Controller
  */
-Class UserSelect implements IController {
+Class UserSelect extends AbstractController {
 
     /**
      * @param array $data donnée en provenance de l'URL
@@ -22,14 +22,13 @@ Class UserSelect implements IController {
      */
     public function run(array $data):array{
 
-
         $ajaxResponse=new AjaxResponse();
 
-
         $user=null;
+
         $users=UserModel::where('id', '=', $data["userselect"])->get()[0];
 
-        if(count($users)) {
+        if(!is_null($users)) {
             $user=$users;
             $ajaxResponse->setMessage(__("Utilisateur %s sélectionné.",$user->pseudo),"success");
             $ajaxResponse->setCallback("cb__UpdateUserPseudo",[$user->pseudo,$user->id],1000);
@@ -39,7 +38,7 @@ Class UserSelect implements IController {
             $users=UserModel::where('id', '!=', 0)->whereNull('deleted_at')->get();
             shuffle($users);
             $user=$users[0];
-            $ajaxResponse->setRedirect(Route::getPathOf("users"),["messageType"=>"error","message"=>__("L'utilisateur sélectionné n'exitse plus.")],1000);
+            $ajaxResponse->setRedirect(Route::getPathOf("Users"),["messageType"=>"error","message"=>__("L'utilisateur sélectionné n'exitse plus.")],1000);
             $response = new JSendResponse('fail', $ajaxResponse->get());
         }
 

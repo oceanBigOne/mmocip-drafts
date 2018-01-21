@@ -16,7 +16,7 @@ use Site\Model\Element as ElementModel;
  *
  * @package Site\Controller
  */
-class Debat implements IController {
+class Debat extends AbstractController {
 
     /**
      * @param array $data donnée en provenance de l'URL

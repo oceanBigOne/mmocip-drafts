@@ -13,7 +13,7 @@ use Site\Model\User as UserModel;
  *
  * @package Site\Controller
  */
-Class UserSave implements IController {
+Class UserSave extends AbstractController {
 
     /**
      * @param array $data donnée en provenance de l'URL
@@ -43,9 +43,9 @@ Class UserSave implements IController {
             $user->pseudo=$data["pseudo"];
             if(isset($data["delete"]) && $data["delete"]=="true"){
                 $user->deleted_at=strtotime("now");
-                $ajaxResponse->setRedirectWithMessage(Route::getPathOf("users"),__("Utilisateur supprimé correctement."),"success",[],1000);
+                $ajaxResponse->setRedirectWithMessage(Route::getPathOf("Users"),__("Utilisateur supprimé correctement."),"success",[],1000);
             }else{
-                $ajaxResponse->setRedirectWithMessage(Route::getPathOf("users"),__("Utilisateur sauvegardé correctement."),"success",[],1000);
+                $ajaxResponse->setRedirectWithMessage(Route::getPathOf("Users"),__("Utilisateur sauvegardé correctement."),"success",[],1000);
             }
             $user->save();
             $response = new JSendResponse('success',$ajaxResponse->get());

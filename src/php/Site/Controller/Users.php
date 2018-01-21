@@ -1,6 +1,7 @@
 <?php
 namespace Site\Controller;
 use Site\Model\User as UserModel;
+use Site\Service\Route;
 use Site\Service\Session;
 
 /**
@@ -10,7 +11,9 @@ use Site\Service\Session;
  *
  * @package Site\Controller
  */
-Class Users implements IController {
+Class Users extends AbstractController {
+
+
 
     /**
      * @param array $data donnée en provenance de l'URL
@@ -28,6 +31,9 @@ Class Users implements IController {
             Session::set("user_pseudo",$user->pseudo);
         }
         $dataTemplate["checked_user_id"]=Session::get("user_id");
+
         return $dataTemplate;
     }
+
+
 }

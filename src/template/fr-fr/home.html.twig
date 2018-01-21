@@ -7,8 +7,9 @@
     <h1>{% trans %}Accueil{% endtrans %}</h1>
     <p>{% trans %}Présentation du projet ...{% endtrans %}</p>
 
+    <p>{{  getPathOf('UserSelect',{'extension':'json' },'get') }}</p>
 
-
+    <p>{{  getPathOf('User',{'name':'clement','id':'8' },'get') }}</p>
 
 
 {% endblock %}

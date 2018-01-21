@@ -5,7 +5,7 @@
 {% block body %}
     {{ parent() }}
     <h1>{% trans %}Utilisateur{%  endtrans %}</h1>
-    <form action="{{  getPathOf('userSave',{'lang':'fr-fr','extension':'json' }) }}" method="post" data-jsbind="ajax" >
+    <form action="{{  getPathOf('UserSave',{'lang':'fr-fr','extension':'json' }) }}" method="post" data-jsbind="ajax" >
     <input type="hidden" id="id" name="id" value="{{  user.id }}" >
     <input type="hidden" id="delete" name="delete" value="false" >
     <div class="form-group">
@@ -13,7 +13,7 @@
         <input type="text" class="form-control" id="pseudo" name="pseudo" value="{{ user.pseudo }}" placeholder="{% trans %}Entrez ici le pseudo de l'utilisateur{%  endtrans %}">
     </div>
     <div class="row">
-        <div class="col-sm-4 text-center "><a href="{{ getPathOf('users',{"lang":'fr'}) }}" role="button" class="btn btn-block btn-secondary  float-sm-left mt-5">{%  trans %}Retour{%  endtrans %}</a></div>
+        <div class="col-sm-4 text-center "><a href="{{ getPathOf('Users',{"lang":'fr'}) }}" role="button" class="btn btn-block btn-secondary  float-sm-left mt-5">{%  trans %}Retour{%  endtrans %}</a></div>
         <div class="col-sm-4 text-center">
             {%  if user.id > 0 %}
             <button type="button" class="btn btn-block btn-danger mt-5" data-jsbind="confirm-delete" data-jsbind-param='{"id":{{ user.id }},"model":"user"}' >{%  trans %}Supprimer{%  endtrans %}</button>

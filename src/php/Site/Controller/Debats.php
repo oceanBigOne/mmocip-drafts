@@ -9,7 +9,7 @@ use Site\Model\Debat as DebatModel;
  *
  * @package Site\Controller
  */
-Class Debats implements IController {
+Class Debats extends AbstractController {
 
     /**
      * @param array $data donnée en provenance de l'URL

@@ -13,7 +13,7 @@ namespace Site\Controller;
  *
  * @package Site\Controller
  */
-class AllMessages implements IController {
+class AllMessages extends AbstractController {
 
     /**
      * @param array $data donnée en provenance de l'URL

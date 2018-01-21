@@ -9,7 +9,7 @@ use Site\Model\Debat as DebatModel;
  *
  * @package Site\Controller
  */
-Class Home implements IController {
+Class Home extends AbstractController {
 
     /**
      * @param array $data donnée en provenance de l'URL
@@ -17,6 +17,7 @@ Class Home implements IController {
      */
     public function run(array $data):array{
         $dataTemplate=[];
+
         return $dataTemplate;
     }
 }
