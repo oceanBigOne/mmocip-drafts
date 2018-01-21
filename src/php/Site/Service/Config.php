@@ -1,7 +1,6 @@
 <?php
 /**
  * Project : mmocip-drafts
- * File : Config.php
  */
 
 namespace Site\Service;
