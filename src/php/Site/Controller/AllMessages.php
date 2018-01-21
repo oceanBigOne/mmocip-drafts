@@ -1,7 +1,6 @@
 <?php
 /**
  * Project : mmocip-drafts
- * File : AllMessages.php
  */
 
 namespace Site\Controller;
