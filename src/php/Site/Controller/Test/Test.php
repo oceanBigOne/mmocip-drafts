@@ -1,15 +1,13 @@
 <?php
-namespace Site\Controller;
-
-
 /**
- * Class Home
- *
- * Affichage de la page HOME du site
- *
- * @package Site\Controller
+ * Project : mmocip-drafts
+ * File : Test.php
  */
-Class Home extends AbstractController {
+
+namespace Site\Controller\Test;
+use Site\Controller\AbstractController;
+
+class Test extends AbstractController {
 
     /**
      * @param array $data donnée en provenance de l'URL

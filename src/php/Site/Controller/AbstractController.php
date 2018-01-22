@@ -8,9 +8,9 @@ namespace Site\Controller;
 use Site\Service\Route as Route;
 
 /**
- * Interface IController
+ * Class AbstractController
  *
- * Interface de déclaration des Controller
+ * Classe abstraite pour la génération des controlleurs
  *
  * @package Site\Controller
  */
@@ -29,15 +29,22 @@ Abstract class AbstractController
      */
     abstract protected function run(array $data):array;
 
+    /**
+     * @return string
+     */
     public function getUri():string{
         return $this->uri;
     }
 
+    /**
+     * @param string $uri
+     */
     public function setUri(string $uri):void{
         $this->uri=$uri;
     }
 
     /**
+     * Génére l'URI correcte de la page en cours
      * @param array $dataCorrect Données corrigé pour la génération de la route d'origine
      */
     public function generateOriginalUri(array $dataCorrect):void{

@@ -97,5 +97,5 @@ function postData(url, data) {
 }
 
 function callbackTest(param1,param2){
-    console.log('Callback test called ! '+param1+'--'+param2);
+    console.log('Callback Test called ! '+param1+'--'+param2);
 }
