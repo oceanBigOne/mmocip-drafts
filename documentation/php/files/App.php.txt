@@ -13,6 +13,7 @@ use Site\Twig\Extension\PathOfController;
 use Site\Twig\Extension\Session;
 use Site\Twig\Extension\I18n;
 use Twig\TwigFilter as Twig_Filter;
+use Site\Service\Route as Route;
 
 /**
  * Class App
@@ -146,8 +147,16 @@ class App
                     $vars=array_merge($vars,$_POST);
                 }
                 $data=$controller->run($vars);
-
                 $path= $locale."/".$handler.".html.twig";
+
+                //301
+
+                if($_SERVER['REQUEST_URI']!=$controller->getUri() && $controller->getUri()!=""){
+                    //echo $_SERVER['REQUEST_URI']."=".$controller->getUri();
+                    header("Status: 301 Moved Permanently", false, 301);
+                    header("Location: ".$controller->getUri());
+
+                }
 
 
                // var_dump($vars);
@@ -157,11 +166,11 @@ class App
                     $path="fr-fr/json.html.twig";
                 }
               }
-                //todo : redirection 301 sur les changements de noms dans les liens
-                /*if($this->getPathOf($handler,$vars)!=$uri){
-                    header("Status: 301 Moved Permanently", false, 301);
-                    header("Location: ".$this->getPathOf($handler,$vars));
-                }*/
+
+
+
+
+
                try{
                     echo $twig->render($path,$data);
                 }catch(\Twig_Error_Loader $e){
@@ -199,7 +208,7 @@ class App
         $classname = "Site\\Controller";
         foreach ($path as $dir) {
             if ($dir != "") {
-                $classname .= '\\' . $this->dir2Class($dir);
+                $classname .= '\\' . Route::dir2Class($dir);
                 if (class_exists($classname)) {
 
                     $controller = new $classname;
@@ -214,54 +223,6 @@ class App
 
     }
 
-    /**
-     * Traduction du nom de dossier en nom de classe
-     *
-     * renvoi un nom de dossier sous forme de nom de classes controller
-     * le caractère - délimite les mots dans le nom de dossier
-     * les majuscules délimitent les mots dans les noms des classes Controller
-     *
-     * @param string $dir nom du dossier
-     * @return string nom de la class
-     */
-    private function dir2Class(string $dir): string
-    {
-        $words = explode("-", $dir);
-        $classname = "";
-        foreach ($words as $word) {
-            if ($word) {
-                $classname .= ucfirst($word);
-            }
-        }
-        return $classname;
-    }
-
-
-    /**
-     * Traduction du nom de class en nom de dossier
-     *
-     * renvoi un nom de classe controller sous forme de nom de dossier
-     * le caractère - délimite les mots dans le nom de dossier
-     * les majuscules délimitent les mots dans les noms des classes Controller
-     *
-     * @param string $classname nom de la class
-     * @return string nom de dossier
-     */
-    private function class2Dir(string $classname): string
-    {
-        $words = preg_split('/(?=[A-Z])/', $classname, -1, PREG_SPLIT_NO_EMPTY);
-        $dir = "";
-        foreach ($words as $word) {
-            if ($word) {
-                $dir .= "-" . strtolower($word);
-            }
-        }
-        if ($dir == "") {
-            $dir = strtolower($classname);
-        }
-        return substr($dir, 1);
-    }
-
 
     /**
      * Renvoi les routes enregistrés pour l'application
@@ -272,109 +233,93 @@ class App
     }
 
 
-
     /**
      * Renvoi la route d'un controlleur spécifique
+     * @param string $controller nom du controlleur
+     * @param string $method (GET|POST) methode du lien
+     * @param array $parameters tableau des paramètres du lien
      * @return string
      */
-    public function getPathOf(string $controller,$parameters):string{
+    public function getPathOf(string $controller,array $parameters,string $method="get"):string{
 
+        //se place à la racine du namespace
+        $controller=str_replace('Site\\Controller\\','',$controller);
+        $method=strtolower($method);
         $revertedRoutes=[];
+        $path="/";
+        $out="/";
+
         foreach($this->routes as $route){
             $routeMethod=$route[0];
             if(is_array($routeMethod)){
-                $routeMethod=$route[0][0];
+                $routeMethod=null;
+                foreach($route[0] as $routeByMethod){
+                    if(strtolower($routeByMethod)==$method){
+                        $routeMethod=$routeByMethod;
+                    }
+                }
             }
-            $routeRegex=$route[1];
+            $routePattern=$route[1];
             $routeController=$route[2];
-            if( $routeController == $controller && ( strtolower($routeMethod)=="get" || strtolower($routeMethod)=="post" )){
-                $revertedRoutes[]=$routeRegex;
+            if( $routeController == $controller && (  strtolower($routeMethod)==$method  )){
+                $revertedRoutes[]=[$method,$routePattern];
             }
         }
-        $goodRegex="";
-        $out="";
-        $match=true;
-        foreach( $revertedRoutes as $regex){
-            $out="";
-            $match=true;
-            $regex=str_replace('[/]','',$regex);
-            $dirstmp= explode("/",$regex);
-            $dirs=[];
-            foreach($dirstmp as $dir) {
-                if(strstr($dir,".")) {
-                    $n=0;
-                    $dirstmppoint=explode(".",$dir);
-                    foreach($dirstmppoint as $dirpoint){
-                        if($n==count($dirstmppoint)){
-                            array_push($dirs,$dirpoint);
-                        }else{
-                            array_push($dirs,$dirpoint.".");
-                        }
-                        $n++;
-                    }
+        $stringToReplace=[];
+        $varsToReplace=[];
+        $values=[];
+        $vars=[];
+
+
+
+        foreach($revertedRoutes as $route){
+            $bIsGoodRoute=true;
+            $path=$route[1];
+
+            //supprime ce qui est optionnel
+            preg_match_all('#\[(.*)\]#isU',$path,$vars);
+            $stringToDelete=$vars[0];
+            foreach($stringToDelete as $string){
+               $path=str_replace($string,"",$path);
+            }
+
+            //identifie les éléments à remplacer dans la route
+            preg_match_all('#{(.*)}#isU',$path,$vars);
+            $stringToReplace=$vars[0];
+
+            //identifie le nom des variables
+            preg_match_all('#{(.*)(:|})#isU', $path,$vars);
+            $varsToReplace=$vars[1];
+
+            //identifie les valeurs possibles
+            $n=0;
+            foreach($stringToReplace as $pattern){
+                $value=$parameters[$varsToReplace[$n]];
+                preg_match_all('#:(.*)}#isU', $pattern,$vars);
+               if(isset($vars[1][0])) {
+                   $tmp = explode("|", $vars[1][0]);
+                   $matchRegex = false;
+                   foreach ($tmp as $possibility) {
+                       if (strstr($possibility, "+") || strstr($possibility, "\\")) {
+                           $matchRegex=preg_match('`' . $possibility . '`isU', $value);
+                       }
+                   }
+               }else{
+                   $matchRegex=true;
+               }
+              // echo "[".$varsToReplace[$n]."=".$parameters[$varsToReplace[$n]]."]";
+                if(in_array($parameters[$varsToReplace[$n]],$tmp) || $matchRegex ){
+                    $path=str_replace($pattern,$value,$path);
 
                 }else{
-                    array_push($dirs,$dir);
+                    $bIsGoodRoute=false;
                 }
+                $n++;
             }
-            foreach($dirs as $dir){
-
-                if(strstr($dir,"{")){
-
-                    $dir=str_replace(['{','}'],['',''],$dir);
-                    $param=explode(":",$dir);
-                    $field=$param[0];
-                    if(isset($parameters[$field])){
-                        if(count($param)>1){
-                            $values=explode("|",$param[1]);
-                        }else{
-                            $values=["\*"];
-                        }
-                        $value="";
-                        if(count($values)>1){
-                            foreach($values as $val){
-
-                                if(preg_match("#".$val."#",$parameters[$field])==1){
-                                    $value=$val;
-                                }
-
-                            }
-                        }else{
-
-                            if (preg_match("#" . $values[0] . "#", $parameters[$field]) == 1 || $values[0] == "\*") {
-                                $value = $parameters[$field];
-                            }
-
-                        }
-                        if($value!=="" && $match ){
-                            $out.=$value."/";
-
-                        }else{
-                            $match=false;
-                        }
-                    }else{
-                        $match=false;
-                    }
-
-                }else{
-                    if($match){
-                        $out.=$dir."/";
-
-                    }
-
-                }
+            if($bIsGoodRoute){
+                $out=$path;
             }
 
-            if($match){
-                $goodRegex=$regex;
-                break;
-            }
-        }
-        if($out==""){
-            $out="#";
-        }
-        if(substr($goodRegex,-1)!="/"){
-            $out=substr($out,0,-1);
         }
         return $out;
     }

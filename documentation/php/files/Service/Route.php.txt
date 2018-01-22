@@ -43,5 +43,54 @@ class Route
     }
 
 
+    /**
+     * Traduction du nom de dossier en nom de classe
+     *
+     * renvoi un nom de dossier sous forme de nom de classes controller
+     * le caractère - délimite les mots dans le nom de dossier
+     * les majuscules délimitent les mots dans les noms des classes Controller
+     *
+     * @param string $dir nom du dossier
+     * @return string nom de la class
+     */
+    public static function dir2Class(string $dir): string
+    {
+        $words = explode("-", $dir);
+        $classname = "";
+        foreach ($words as $word) {
+            if ($word) {
+                $classname .= ucfirst($word);
+            }
+        }
+        return $classname;
+    }
+
+
+    /**
+     * Traduction du nom de class en nom de dossier
+     *
+     * renvoi un nom de classe controller sous forme de nom de dossier
+     * le caractère - délimite les mots dans le nom de dossier
+     * les majuscules délimitent les mots dans les noms des classes Controller
+     *
+     * @param string $classname nom de la class
+     * @return string nom de dossier
+     */
+    public static function class2Dir(string $classname): string
+    {
+        $words = preg_split('/(?=[A-Z])/', $classname, -1, PREG_SPLIT_NO_EMPTY);
+        $dir = "";
+        foreach ($words as $word) {
+            if ($word) {
+                $dir .= "-" . strtolower($word);
+            }
+        }
+        if ($dir == "") {
+            $dir = strtolower($classname);
+        }
+        return substr($dir, 1);
+    }
+
+
 
 }

@@ -9,7 +9,7 @@ use Site\Model\User as UserModel;
  *
  * @package Site\Controller
  */
-Class User implements IController {
+Class User extends AbstractController {
 
     /**
      * @param array $data donnée en provenance de l'URL
@@ -24,6 +24,10 @@ Class User implements IController {
             $dataTemplate["user"]=new UserModel();
         }
 
+        //generation de l'URI corrigé pour 301
+        $dataCorrect=$data;
+        $dataCorrect["name"]= $dataTemplate["user"]->pseudo;
+        $this->generateOriginalUri($dataCorrect);
 
         return $dataTemplate;
     }

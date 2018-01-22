@@ -19,9 +19,9 @@ class PathOfController extends \Twig_Extension
     }
 
 
-    public function getPathOf($controller,$param=[])
+    public function getPathOf($controller,$param=[],$method='get')
     {
-        return Route::getPathOf($controller,$param);
+        return Route::getPathOf($controller,$param,$method);
 
     }
 
