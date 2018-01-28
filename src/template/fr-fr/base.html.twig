@@ -27,7 +27,7 @@
             {% include 'fr-fr/include/menu.html.twig' %}
         </ul>
     </div>
-    <div class="text-light pullright d-sm-none d-md-block" id="current_pseudo"> {{ session('user_pseudo') }}</div>
+    <div class="text-light pullright d-sm-none d-md-block" id="current_pseudo">{%  if session('user_pseudo')!="" %}{{ session('user_pseudo') }}{% else %}{% trans %}<i>Non connecté</i>{% endtrans %}{% endif %}</div>
 </nav>
 <main class="container" >
     {% block body %}{% endblock %}
