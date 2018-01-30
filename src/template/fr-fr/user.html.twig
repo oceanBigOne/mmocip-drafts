@@ -5,7 +5,7 @@
 {% block body %}
     {{ parent() }}
     <h1>{% trans %}Utilisateur{%  endtrans %}</h1>
-    <form action="{{  getPathOf('UserSave',{'lang':'fr-fr','extension':'json' }) }}" method="post" data-jsbind="ajax" >
+    <form action="{{  getPathOf('UserSave',{'extension':'json' }) }}" method="post" data-jsbind="ajax" >
     <input type="hidden" id="id" name="id" value="{{  user.id }}" >
     <input type="hidden" id="delete" name="delete" value="false" >
     <div class="form-group">

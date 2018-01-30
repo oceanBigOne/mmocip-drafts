@@ -5,11 +5,37 @@
 {% block body %}
     {{ parent() }}
     <h1>{% trans %}Liste des débats{% endtrans %}</h1>
-    <ul>
+
+
+
+
+        <hr class="mb-5">
+        <div class="row  d-none d-sm-flex">
+            <div class="col-sm-6 col-md-8"><h5>{%  trans %}Titre{%  endtrans %}</h5></div>
+            <div class="col-sm-6 col-md-4 text-right"><h5>{% trans %}Edition{%  endtrans %}</h5></div>
+        </div>
+
         {% for debat in debats %}
-            <li><a href="{{  getPathOf('Debat',{"lang":'fr-fr',"id":debat.id,"name":debats[0].title|toPath }) }}">{{ debat.title }}</a></li>
+            <div class="row row-table">
+                <div class="col-4 d-sm-none  overflow-hidden">{% trans %}Titre :{%  endtrans %}</div>
+                <div class="col-8 col-sm-6 col-md-8 text-ellipsis overflow-hidden" title="{{ debat.title }}">
+                    <a href="{{  getPathOf('DebatViewer',{"id":debat.id,"title":debat.title|toPath }) }}">{{ debat.title }}</a>
+                </div>
+                <div class="col-4 d-sm-none text-ellipsis overflow-hidden">{%  trans %}Edition :{%  endtrans %}</div>
+                <div class="col-8 col-sm-6 col-md-4">
+                    <a href="{{  getPathOf('Debat',{"id":debat.id,"title":debat.title|toPath }) }}" class="btn btn-secondary btn-sm float-sm-right"><i class="fa fa-pencil-square-o"
+                                                                                                                                                    aria-hidden="true"></i></a></div>
+            </div>
+
+
         {% endfor %}
-    </ul>
+
+
+        <div class="text-center"><a href="{{  getPathOf('Debat',{"id":0,"title":trans("Ajouter")|toPath}) }}" class="btn btn-primary  float-sm-right mt-5">{% trans %}Ajouter{%  endtrans %}</a></div>
+
+
+
+
 
 
 

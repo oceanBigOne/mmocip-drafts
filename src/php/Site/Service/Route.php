@@ -92,5 +92,22 @@ class Route
     }
 
 
+    /**
+     * Renvoi une chaine de caractère compatible avec une URL
+     * @param $str string|null
+     * @return string
+     */
+    public static function toPath(string $str= NULL):string{
+        $clean="";
+        if(!is_null($str)){
+            $clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str);
+            $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);
+            $clean = strtolower(trim($clean, '-'));
+            $clean = str_replace(" ","-",$clean);
+        }
+        return $clean;
+    }
+
+
 
 }

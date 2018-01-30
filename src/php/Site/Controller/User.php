@@ -1,6 +1,7 @@
 <?php
 namespace Site\Controller;
 use Site\Model\User as UserModel;
+use Site\Service\Route;
 
 /**
  * Class Users
@@ -17,16 +18,17 @@ Class User extends AbstractController {
      */
     public function run(array $data):array{
         $dataTemplate=[];
+        $dataCorrect=$data;
 
         if($data["id"]!=0){
             $dataTemplate["user"]=UserModel::where('id', '=', $data["id"])->get()[0];
+            $dataCorrect["name"]= Route::toPath($dataTemplate["user"]->pseudo);
         }else{
             $dataTemplate["user"]=new UserModel();
+            $dataCorrect["name"]= Route::toPath(__("Ajouter"));
         }
 
         //generation de l'URI corrigé pour 301
-        $dataCorrect=$data;
-        $dataCorrect["name"]= $dataTemplate["user"]->pseudo;
         $this->generateOriginalUri($dataCorrect);
 
         return $dataTemplate;

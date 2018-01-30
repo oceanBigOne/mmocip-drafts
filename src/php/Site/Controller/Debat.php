@@ -8,6 +8,7 @@ namespace Site\Controller;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Site\Model\Debat as DebatModel;
 use Site\Model\Element as ElementModel;
+use Site\Service\Route;
 
 /**
  * Class Debat
@@ -24,7 +25,19 @@ class Debat extends AbstractController {
      */
     public function run(array $data):array{
         $dataTemplate=[];
-        $dataTemplate["debat"]=DebatModel::where('id', '=', $data["id"])->get()[0];
+        $dataCorrect=$data;
+
+        if($data["id"]!=0){
+            $dataTemplate["debat"]=DebatModel::where('id', '=', $data["id"])->get()[0];
+            $dataCorrect["name"]= Route::toPath($dataTemplate["debat"]->pseudo);
+        }else{
+            $dataTemplate["debat"]=new DebatModel();
+            $dataCorrect["name"]= Route::toPath(__("Ajouter"));
+        }
+
+        //generation de l'URI corrigé pour 301
+        $this->generateOriginalUri($dataCorrect);
+
         return $dataTemplate;
     }
 }

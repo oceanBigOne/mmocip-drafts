@@ -4,11 +4,22 @@
 
 {% block body %}
     {{ parent() }}
-    <h1>{% trans %}Débat : {% endtrans %}{{ debat.title }}</h1>
-   <hr />
-    <ul>
-        {% for element in debat.elements %}
-             <li><a href="#">{{ element.content }}</a></li>
-        {% endfor %}
-    </ul>
+    <h1>{% trans %}Débat{%  endtrans %}</h1>
+    <form action="{{  getPathOf('DebatSave',{'extension':'json' }) }}" method="post" data-jsbind="ajax" >
+        <input type="hidden" id="id" name="id" value="{{  debat.id }}" >
+        <input type="hidden" id="delete" name="delete" value="false" >
+        <div class="form-group">
+            <label for="title">{%  trans %}Titre{%  endtrans %}</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{ debat.title }}" placeholder="{% trans %}Entrez ici le titre du débat{%  endtrans %}">
+        </div>
+        <div class="row">
+            <div class="col-sm-4 text-center "><a href="{{ getPathOf('Debats') }}" role="button" class="btn btn-block btn-secondary  float-sm-left mt-5">{%  trans %}Retour{%  endtrans %}</a></div>
+            <div class="col-sm-4 text-center">
+                {%  if debat.id > 0 %}
+                    <button type="button" class="btn btn-block btn-danger mt-5" data-jsbind="confirm-delete" data-jsbind-param='{"id":{{ debat.id }},"model":"debat"}' >{%  trans %}Supprimer{%  endtrans %}</button>
+                {% endif %}</div>
+            <div class="col-sm-4 text-center"><button type="submit" class="btn btn-block btn-primary  float-sm-right mt-5">{%  trans %}Valider{%  endtrans %}</button></div>
+        </div>
+        </div>
+    </form>
 {% endblock %}

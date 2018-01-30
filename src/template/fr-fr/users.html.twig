@@ -47,7 +47,7 @@
             {% endfor %}
 
 
-        <div class="text-center"><a href="{{  getPathOf('User',{"id":0,"name":"user" }) }}" class="btn btn-primary  float-sm-right mt-5">{% trans %}Ajouter{%  endtrans %}</a></div>
+        <div class="text-center"><a href="{{  getPathOf('User',{"id":0,"name":trans("Ajouter")|toPath }) }}" class="btn btn-primary  float-sm-right mt-5">{% trans %}Ajouter{%  endtrans %}</a></div>
 
 
     </form>

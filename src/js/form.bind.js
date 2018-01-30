@@ -14,55 +14,65 @@ $(document).ready(function(){
             $.ajax({
                 type: "POST", data: $(this).serialize(), url: $form.attr("action")})
                 .done(function (response) {
+                    var isError=false;
+                    if(typeof response.status === 'undefined'){
+                        isError=true;
+                    }
+                    if(isError){
+                        messageModal("system/error",{"content":response},$form);
+                    }else {
 
-                    //message
-                    if (typeof response.data.message !== 'undefined' && response.data.message !== null) {
-                        var type="success";
-                        if (typeof response.data.messageType !== 'undefined' && response.data.messageType !== null) {
-                            type=response.data.messageType;
-                        }else{
-                            if (response.status === "success") {
-                                type="success";
+
+
+                        //message
+                        if (typeof response.data.message !== 'undefined' && response.data.message !== null) {
+                            var type = "success";
+                            if (typeof response.data.messageType !== 'undefined' && response.data.messageType !== null) {
+                                type = response.data.messageType;
                             } else {
-                                type="error";
+                                if (response.status === "success") {
+                                    type = "success";
+                                } else {
+                                    type = "error";
+                                }
+                            }
+
+                            if (type !== "modal") {
+                                messageTop(type, response.data.message);
+                            } else {
+                                messageModal(response.data.message.reference, response.data.message.data, $form);
+                            }
+
+                        }
+
+                        //callback
+                        if (typeof response.data.callback !== 'undefined' && response.data.callback !== null) {
+                            if (response.data.callback.data) {
+                                setTimeout(function () {
+                                    window[response.data.callback.function].apply(this, response.data.callback.data)
+                                }, response.data.callback.timeout);
+                            } else {
+                                setTimeout(function () {
+                                    window[response.data.callback.function]()
+                                }, response.data.callback.timeout);
                             }
                         }
 
-                        if (type!=="modal") {
-                            messageTop(type,response.data.message);
-                        } else {
-                            messageModal(response.data.message.reference,response.data.message.data,$form);
-                        }
+                        //redirect
+                        if (typeof response.data.redirect !== 'undefined' && response.data.redirect !== null) {
 
-                    }
-
-                    //callback
-                    if (typeof response.data.callback !== 'undefined' && response.data.callback !== null) {
-                        if (response.data.callback.data) {
                             setTimeout(function () {
-                                window[response.data.callback.function].apply(this, response.data.callback.data)
-                            }, response.data.callback.timeout);
-                        } else {
-                            setTimeout(function () {
-                                window[response.data.callback.function]()
-                            }, response.data.callback.timeout);
+                                postData(response.data.redirect.url, response.data.redirect.data);
+                            }, response.data.redirect.timeout);
+
                         }
-                    }
-
-                    //redirect
-                    if (typeof response.data.redirect !== 'undefined' && response.data.redirect !== null) {
-
-                        setTimeout(function () {
-                            postData(response.data.redirect.url, response.data.redirect.data);
-                        }, response.data.redirect.timeout);
-
                     }
 
                     //deverouille le formulaire
                     setTimeout(function(){ $form.data('submited', false);},1000);
 
                 }).fail(function(){
-                    messageTop("error","Unknow error !");
+                    messageTop("error","Unknow error ! (fail)");
                     setTimeout(function(){ $form.data('submited', false);},1000);
                 });
 

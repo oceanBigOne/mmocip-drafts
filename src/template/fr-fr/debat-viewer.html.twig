@@ -1,0 +1,14 @@
+{% extends "fr-fr/base.html.twig" %}
+
+{% block stylesheets %}{{ parent() }}{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <h1>{% trans %}Débat : {% endtrans %}{{ debat.title }}</h1>
+   <hr />
+    <ul>
+        {% for element in debat.elements %}
+             <li><a href="#">{{ element.content }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

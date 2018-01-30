@@ -12,6 +12,7 @@ use Site\Twig\Extension\OnloadMessage;
 use Site\Twig\Extension\PathOfController;
 use Site\Twig\Extension\Session;
 use Site\Twig\Extension\I18n;
+use Site\Twig\Extension\Trans;
 use Twig\TwigFilter as Twig_Filter;
 use Site\Service\Route as Route;
 
@@ -121,6 +122,7 @@ class App
         $twig->addExtension( new PathOfController());
         $twig->addExtension( new Session());
         $twig->addExtension(new I18n());
+        $twig->addExtension(new Trans());
         $twig->addExtension(new OnloadMessage());
 
 
@@ -294,25 +296,27 @@ class App
             //identifie les valeurs possibles
             $n=0;
             foreach($stringToReplace as $pattern){
-                $value=$parameters[$varsToReplace[$n]];
-                preg_match_all('#:(.*)}#isU', $pattern,$vars);
-               if(isset($vars[1][0])) {
-                   $tmp = explode("|", $vars[1][0]);
-                   $matchRegex = false;
-                   foreach ($tmp as $possibility) {
-                       if (strstr($possibility, "+") || strstr($possibility, "\\")) {
-                           $matchRegex=preg_match('`' . $possibility . '`isU', $value);
-                       }
-                   }
-               }else{
-                   $matchRegex=true;
-               }
-              // echo "[".$varsToReplace[$n]."=".$parameters[$varsToReplace[$n]]."]";
-                if(in_array($parameters[$varsToReplace[$n]],$tmp) || $matchRegex ){
-                    $path=str_replace($pattern,$value,$path);
+                if(isset($parameters[$varsToReplace[$n]])) {
+                    $value = $parameters[$varsToReplace[$n]];
+                    preg_match_all('#:(.*)}#isU', $pattern, $vars);
+                    if (isset($vars[1][0])) {
+                        $tmp = explode("|", $vars[1][0]);
+                        $matchRegex = false;
+                        foreach ($tmp as $possibility) {
+                            if (strstr($possibility, "+") || strstr($possibility, "\\")) {
+                                $matchRegex = preg_match('`' . $possibility . '`isU', $value);
+                            }
+                        }
+                    } else {
+                        $matchRegex = true;
+                    }
+                    // echo "[".$varsToReplace[$n]."=".$parameters[$varsToReplace[$n]]."]";
+                    if (in_array($parameters[$varsToReplace[$n]], $tmp) || $matchRegex) {
+                        $path = str_replace($pattern, $value, $path);
 
-                }else{
-                    $bIsGoodRoute=false;
+                    } else {
+                        $bIsGoodRoute = false;
+                    }
                 }
                 $n++;
             }
