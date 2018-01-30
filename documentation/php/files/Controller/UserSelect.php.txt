@@ -16,10 +16,7 @@ use Site\Model\User as UserModel;
  */
 Class UserSelect extends AbstractController {
 
-    /**
-     * @param array $data donnée en provenance de l'URL
-     * @return array données à transmettre au twig
-     */
+
     public function run(array $data):array{
 
         $ajaxResponse=new AjaxResponse();
@@ -47,5 +44,9 @@ Class UserSelect extends AbstractController {
 
         $response->respond();
         return [];
+    }
+
+    public function checkUri(array $data):bool{
+        return true;
     }
 }

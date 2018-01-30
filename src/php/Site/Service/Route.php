@@ -97,7 +97,7 @@ class Route
      * @param $str string|null
      * @return string
      */
-    public static function toPath(string $str= NULL):string{
+    public static function str2Uri(string $str= NULL):string{
         $clean="";
         if(!is_null($str)){
             $clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str);

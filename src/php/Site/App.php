@@ -118,7 +118,7 @@ class App
             'cache' =>false,
         ));
         //FLITRES TWIG
-        $twig->addFilter(new Twig_Filter('toPath', 'Site\Twig\Filter\FormatString::toPath'));
+        $twig->addFilter(new Twig_Filter('str2Uri', 'Site\Twig\Filter\FormatString::str2Uri'));
         $twig->addExtension( new PathOfController());
         $twig->addExtension( new Session());
         $twig->addExtension(new I18n());
@@ -148,48 +148,39 @@ class App
                 if(count($_POST)>0){
                     $vars=array_merge($vars,$_POST);
                 }
-                $data=$controller->run($vars);
-                $path= $locale."/".$handler.".html.twig";
-
-                //301
-
-                if($_SERVER['REQUEST_URI']!=$controller->getUri() && $controller->getUri()!=""){
-                    //echo $_SERVER['REQUEST_URI']."=".$controller->getUri();
+                if($controller->checkUri($vars)){
+                    $data=$controller->run($vars);
+                    $path= $locale."/".$handler.".html.twig";
+                    // var_dump($vars);
+                    if(isset($vars["extension"])){
+                        if($vars["extension"]=="json"){
+                            header('Content-Type: application/json');
+                            $path="fr-fr/json.html.twig";
+                        }
+                    }
+                    try{
+                        echo $twig->render($path,$data);
+                    }catch(\Twig_Error_Loader $e){
+                        try{
+                            $path= $defaultLocale."/".$handler.".html.twig";
+                            echo $twig->render($path,$data);
+                        }catch(\Twig_Error_Loader $e){
+                            //$dataUrl=$vars;
+                            //$dataUrl["lang"]="fr";
+                            // $urlFR=$this->getPathOf($handler,$dataUrl);
+                            // echo "Undefined route ... Maybe try another language : <a href='".$urlFR."'>$urlFR</a>";
+                            //var_dump($vars);
+                            //echo $e;
+                            header("HTTP/1.0 404 Not Found");
+                        }
+                    }
+                    break;
+                }else{
                     header("Status: 301 Moved Permanently", false, 301);
                     header("Location: ".$controller->getUri());
-
                 }
 
 
-               // var_dump($vars);
-              if(isset($vars["extension"])){
-                if($vars["extension"]=="json"){
-                    header('Content-Type: application/json');
-                    $path="fr-fr/json.html.twig";
-                }
-              }
-
-
-
-
-
-               try{
-                    echo $twig->render($path,$data);
-                }catch(\Twig_Error_Loader $e){
-                   try{
-                       $path= $defaultLocale."/".$handler.".html.twig";
-                       echo $twig->render($path,$data);
-                   }catch(\Twig_Error_Loader $e){
-                       //$dataUrl=$vars;
-                       //$dataUrl["lang"]="fr";
-                       // $urlFR=$this->getPathOf($handler,$dataUrl);
-                       // echo "Undefined route ... Maybe try another language : <a href='".$urlFR."'>$urlFR</a>";
-                       //var_dump($vars);
-                       //echo $e;
-                        header("HTTP/1.0 404 Not Found");
-                   }
-                }
-                break;
         }
         if(isset($_GET["debugsql"])){
             dd($DB->getQueryLog());
@@ -245,6 +236,7 @@ class App
     public function getPathOf(string $controller,array $parameters,string $method="get"):string{
 
         //se place à la racine du namespace
+        $controller=str_replace('/','\\',$controller);
         $controller=str_replace('Site\\Controller\\','',$controller);
         $method=strtolower($method);
         $revertedRoutes=[];

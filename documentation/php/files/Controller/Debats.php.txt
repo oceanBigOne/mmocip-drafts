@@ -11,13 +11,14 @@ use Site\Model\Debat as DebatModel;
  */
 Class Debats extends AbstractController {
 
-    /**
-     * @param array $data donnée en provenance de l'URL
-     * @return array données à transmettre au twig
-     */
+
     public function run(array $data):array{
         $dataTemplate=[];
         $dataTemplate["debats"]=DebatModel::where('id', '!=', 0)->get();
         return $dataTemplate;
+    }
+
+    public function checkUri(array $data):bool{
+        return true;
     }
 }

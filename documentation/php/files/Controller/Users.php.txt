@@ -15,10 +15,6 @@ Class Users extends AbstractController {
 
 
 
-    /**
-     * @param array $data donnée en provenance de l'URL
-     * @return array données à transmettre au twig
-     */
     public function run(array $data):array{
         $dataTemplate=[];
 
@@ -33,6 +29,10 @@ Class Users extends AbstractController {
         $dataTemplate["checked_user_id"]=Session::get("user_id");
 
         return $dataTemplate;
+    }
+
+    public function checkUri(array $data):bool{
+        return true;
     }
 
 

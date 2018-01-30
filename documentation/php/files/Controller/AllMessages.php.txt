@@ -15,10 +15,7 @@ namespace Site\Controller;
  */
 class AllMessages extends AbstractController {
 
-    /**
-     * @param array $data donnée en provenance de l'URL
-     * @return array données à transmettre au twig
-     */
+
     public function run(array $data):array{
 
         $sPath="../src/template/fr-fr/message";
@@ -33,5 +30,9 @@ class AllMessages extends AbstractController {
         }
 
         return $dataTemplate;
+    }
+
+    public function checkUri(array $data):bool{
+        return true;
     }
 }

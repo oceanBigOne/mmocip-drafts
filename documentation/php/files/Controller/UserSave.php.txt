@@ -15,10 +15,7 @@ use Site\Model\User as UserModel;
  */
 Class UserSave extends AbstractController {
 
-    /**
-     * @param array $data donnée en provenance de l'URL
-     * @return array données à transmettre au twig
-     */
+
     public function run(array $data):array{
 
 
@@ -59,5 +56,9 @@ Class UserSave extends AbstractController {
 
         $response->respond();
         return [];
+    }
+
+    public function checkUri(array $data):bool{
+        return true;
     }
 }

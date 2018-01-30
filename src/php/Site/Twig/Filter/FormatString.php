@@ -13,9 +13,9 @@ class FormatString extends \Twig_Extension
      * @param string $str
      * @return string
      */
-    public static function toPath(string $str=NULL):string{
+    public static function str2Uri(string $str=NULL):string{
 
-       return Route::toPath($str);
+       return Route::str2Uri($str);
     }
 
 

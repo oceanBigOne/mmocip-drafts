@@ -67,12 +67,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">84</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">119</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
@@ -122,6 +122,8 @@
                                                                                                     <li><a href="#Controller\Debats.php"><i class="icon-file"></i> Controller\Debats.php</a></li>
                                                                                                     <li><a href="#Model\Debat.php"><i class="icon-file"></i> Model\Debat.php</a></li>
                                                                                                                                                             <li><a href="#Controller\Debat.php"><i class="icon-file"></i> Controller\Debat.php</a></li>
+                                                                                                    <li><a href="#Controller\DebatSave.php"><i class="icon-file"></i> Controller\DebatSave.php</a></li>
+                                                                                                    <li><a href="#Twig\Extension\Trans.php"><i class="icon-file"></i> Twig\Extension\Trans.php</a></li>
                                                                     </ul>
         </div>
 
@@ -208,7 +210,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Controller\UserSave.php
-                            <small style="float: right;padding-right: 10px;">2</small>
+                            <small style="float: right;padding-right: 10px;">5</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -227,8 +229,23 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>22</td>
+                                        <td>19</td>
+                                        <td>Argument $data is missing from the Docblock of run</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
                                         <td>No summary for method run()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>61</td>
+                                        <td>Argument $data is missing from the Docblock of checkUri</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>61</td>
+                                        <td>No summary for method checkUri()</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -311,52 +328,6 @@
                         <h3>
                             <i class="icon-file"></i>
                             Twig\Filter\FormatString.php
-                            <small style="float: right;padding-right: 10px;">5</small>
-                        </h3>
-                        <div>
-                            <table class="table markers table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Type</th>
-                                    <th>Line</th>
-                                    <th>Description</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>0</td>
-                                        <td>No summary was found for this file</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>8</td>
-                                        <td>No summary for class \Site\Twig\Filter\FormatString</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>15</td>
-                                        <td>Name of argument $str does not match with the DocBlock&#039;s name $string in toPath()</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>15</td>
-                                        <td>The type hint of the argument is incorrect for the type definition of the @param tag with argument $str in toPath()</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>notice</td>
-                                        <td>15</td>
-                                        <td>Parameter $string could not be found in toPath()</td>
-                                    </tr>
-                                                            </tbody>
-                            </table>
-                        </div>
-                                    </div>
-                            <div class="package-contents">
-                                            <a name="Controller\UserSelect.php" id="Controller\UserSelect.php"></a>
-                        <h3>
-                            <i class="icon-file"></i>
-                            Controller\UserSelect.php
                             <small style="float: right;padding-right: 10px;">2</small>
                         </h3>
                         <div>
@@ -376,8 +347,54 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>23</td>
+                                        <td>9</td>
+                                        <td>No summary for class \Site\Twig\Filter\FormatString</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Controller\UserSelect.php" id="Controller\UserSelect.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Controller\UserSelect.php
+                            <small style="float: right;padding-right: 10px;">5</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>20</td>
+                                        <td>Argument $data is missing from the Docblock of run</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>20</td>
                                         <td>No summary for method run()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>49</td>
+                                        <td>Argument $data is missing from the Docblock of checkUri</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>49</td>
+                                        <td>No summary for method checkUri()</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -491,7 +508,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Controller\Home.php
-                            <small style="float: right;padding-right: 10px;">2</small>
+                            <small style="float: right;padding-right: 10px;">5</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -510,8 +527,23 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>18</td>
+                                        <td>15</td>
+                                        <td>Argument $data is missing from the Docblock of run</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>15</td>
                                         <td>No summary for method run()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>21</td>
+                                        <td>Argument $data is missing from the Docblock of checkUri</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>21</td>
+                                        <td>No summary for method checkUri()</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -538,57 +570,57 @@
                                 <tbody>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>62</td>
+                                        <td>63</td>
                                         <td>Argument $routes is missing from the Docblock of parseRoute</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>100</td>
+                                        <td>101</td>
                                         <td>Argument $config_bdd is missing from the Docblock of run</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>100</td>
+                                        <td>101</td>
                                         <td>Argument $locale is missing from the Docblock of run</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>100</td>
+                                        <td>101</td>
                                         <td>Argument $defaultLocale is missing from the Docblock of run</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>243</td>
+                                        <td>236</td>
                                         <td>Name of argument $parameters does not match with the DocBlock&#039;s name $method in getPathOf()</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>243</td>
+                                        <td>236</td>
                                         <td>The type hint of the argument is incorrect for the type definition of the @param tag with argument $parameters in getPathOf()</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>243</td>
+                                        <td>236</td>
                                         <td>Name of argument $method does not match with the DocBlock&#039;s name $parameters in getPathOf()</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>243</td>
+                                        <td>236</td>
                                         <td>The type hint of the argument is incorrect for the type definition of the @param tag with argument $method in getPathOf()</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>35</td>
+                                        <td>36</td>
                                         <td>No summary for property $routeCollector</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>40</td>
+                                        <td>41</td>
                                         <td>No summary for property $routeDispatcher</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>45</td>
+                                        <td>46</td>
                                         <td>No summary for property $routeInfo</td>
                                     </tr>
                                                             </tbody>
@@ -600,7 +632,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Controller\Message.php
-                            <small style="float: right;padding-right: 10px;">1</small>
+                            <small style="float: right;padding-right: 10px;">4</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -614,8 +646,23 @@
                                 <tbody>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>22</td>
+                                        <td>19</td>
+                                        <td>Argument $data is missing from the Docblock of run</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
                                         <td>No summary for method run()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>28</td>
+                                        <td>Argument $data is missing from the Docblock of checkUri</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>28</td>
+                                        <td>No summary for method checkUri()</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -652,7 +699,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Controller\AllMessages.php
-                            <small style="float: right;padding-right: 10px;">1</small>
+                            <small style="float: right;padding-right: 10px;">4</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -666,8 +713,23 @@
                                 <tbody>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>22</td>
+                                        <td>19</td>
+                                        <td>Argument $data is missing from the Docblock of run</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
                                         <td>No summary for method run()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>35</td>
+                                        <td>Argument $data is missing from the Docblock of checkUri</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>35</td>
+                                        <td>No summary for method checkUri()</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -678,7 +740,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Controller\Test\Test.php
-                            <small style="float: right;padding-right: 10px;">2</small>
+                            <small style="float: right;padding-right: 10px;">5</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -697,8 +759,23 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>16</td>
+                                        <td>13</td>
+                                        <td>Argument $data is missing from the Docblock of run</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>13</td>
                                         <td>No summary for method run()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
+                                        <td>Argument $data is missing from the Docblock of checkUri</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
+                                        <td>No summary for method checkUri()</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -709,7 +786,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Controller\AbstractController.php
-                            <small style="float: right;padding-right: 10px;">3</small>
+                            <small style="float: right;padding-right: 10px;">2</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -723,17 +800,12 @@
                                 <tbody>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>30</td>
-                                        <td>No summary for method run()</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>35</td>
+                                        <td>44</td>
                                         <td>No summary for method getUri()</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>42</td>
+                                        <td>51</td>
                                         <td>No summary for method setUri()</td>
                                     </tr>
                                                             </tbody>
@@ -786,7 +858,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Controller\Users.php
-                            <small style="float: right;padding-right: 10px;">2</small>
+                            <small style="float: right;padding-right: 10px;">5</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -805,8 +877,23 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>22</td>
+                                        <td>18</td>
+                                        <td>Argument $data is missing from the Docblock of run</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
                                         <td>No summary for method run()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>34</td>
+                                        <td>Argument $data is missing from the Docblock of checkUri</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>34</td>
+                                        <td>No summary for method checkUri()</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -873,7 +960,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Controller\User.php
-                            <small style="float: right;padding-right: 10px;">2</small>
+                            <small style="float: right;padding-right: 10px;">5</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -892,8 +979,23 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>18</td>
+                                        <td>16</td>
+                                        <td>Argument $data is missing from the Docblock of run</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>16</td>
                                         <td>No summary for method run()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>30</td>
+                                        <td>Argument $data is missing from the Docblock of checkUri</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>30</td>
+                                        <td>No summary for method checkUri()</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -991,7 +1093,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Controller\Debats.php
-                            <small style="float: right;padding-right: 10px;">2</small>
+                            <small style="float: right;padding-right: 10px;">5</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -1010,8 +1112,23 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>18</td>
+                                        <td>15</td>
+                                        <td>Argument $data is missing from the Docblock of run</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>15</td>
                                         <td>No summary for method run()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>21</td>
+                                        <td>Argument $data is missing from the Docblock of checkUri</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>21</td>
+                                        <td>No summary for method checkUri()</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -1060,7 +1177,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Controller\Debat.php
-                            <small style="float: right;padding-right: 10px;">1</small>
+                            <small style="float: right;padding-right: 10px;">3</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -1074,8 +1191,110 @@
                                 <tbody>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>25</td>
+                                        <td>26</td>
                                         <td>No summary for method run()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>44</td>
+                                        <td>Argument $data is missing from the Docblock of checkUri</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>44</td>
+                                        <td>No summary for method checkUri()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Controller\DebatSave.php" id="Controller\DebatSave.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Controller\DebatSave.php
+                            <small style="float: right;padding-right: 10px;">5</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
+                                        <td>Argument $data is missing from the Docblock of run</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>19</td>
+                                        <td>No summary for method run()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>61</td>
+                                        <td>Argument $data is missing from the Docblock of checkUri</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>61</td>
+                                        <td>No summary for method checkUri()</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Twig\Extension\Trans.php" id="Twig\Extension\Trans.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Twig\Extension\Trans.php
+                            <small style="float: right;padding-right: 10px;">5</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>No summary for class \Site\Twig\Extension\Trans</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>12</td>
+                                        <td>No summary for method getFunctions()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>20</td>
+                                        <td>Argument $str is missing from the Docblock of trans</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>20</td>
+                                        <td>No summary for method trans()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>26</td>
+                                        <td>No summary for method getName()</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -1121,7 +1340,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on January 22nd, 2018 at 07:57.
+                    on January 30th, 2018 at 16:46.
                 </section>
             </section>
         </section>

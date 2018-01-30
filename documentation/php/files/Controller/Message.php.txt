@@ -15,10 +15,7 @@ namespace Site\Controller;
  */
 class Message extends AbstractController {
 
-    /**
-     * @param array $data donnée en provenance de l'URL
-     * @return array données à transmettre au twig
-     */
+
     public function run(array $data):array{
 
         if(!isset($data["modal_ref"])){
@@ -26,5 +23,9 @@ class Message extends AbstractController {
         }
         $dataTemplate=$data;
         return $dataTemplate;
+    }
+
+    public function checkUri(array $data):bool{
+        return true;
     }
 }

@@ -25,19 +25,23 @@ class Debat extends AbstractController {
      */
     public function run(array $data):array{
         $dataTemplate=[];
-        $dataCorrect=$data;
+        //$dataCorrect=$data;
 
         if($data["id"]!=0){
             $dataTemplate["debat"]=DebatModel::where('id', '=', $data["id"])->get()[0];
-            $dataCorrect["name"]= Route::toPath($dataTemplate["debat"]->pseudo);
+            //$dataCorrect["name"]= Route::str2Uri($dataTemplate["debat"]->pseudo);
         }else{
             $dataTemplate["debat"]=new DebatModel();
-            $dataCorrect["name"]= Route::toPath(__("Ajouter"));
+            //$dataCorrect["name"]= Route::str2Uri(__("Ajouter"));
         }
 
         //generation de l'URI corrigé pour 301
-        $this->generateOriginalUri($dataCorrect);
+       // $this->generateOriginalUri($dataCorrect);
 
         return $dataTemplate;
+    }
+
+    public function checkUri(array $data):bool{
+        return true;
     }
 }
